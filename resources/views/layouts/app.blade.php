@@ -50,7 +50,7 @@
             <h1 style="color:black;">Loading...</h1>
         </div>
     </div> -->
-    <div class="nav_bar w-100" >
+    <div class="nav_bar w-100">
         <nav>
             <a class="navbar-brand" href="/">
                 <div class="logo">
@@ -120,7 +120,7 @@
                     </a>
                     <!-- Dropdown menu -->
                     <ul class="dropdown-menu bg-dark">
-                        <li class="dropdown-item" >
+                        <li class="dropdown-item">
                             <a href="/blog" class="dlink text-light w-100">
                                 Blog
                             </a>
@@ -185,8 +185,8 @@
                     Nairobi, Kenya</p>
             </div>
             <div class="col-md-5 w3agile_footer_grid">
-            <h3 style="color: #FFFFFF">Locate Us</h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.30229418104116!2d36.80836374419173!3d-1.2709844117745908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f176ceaf30a91%3A0x6e99c375b66381be!2sGlobal%20Trade%20Center%20Office%20Tower!5e0!3m2!1sen!2snl!4v1706770477038!5m2!1sen!2snl"  style="border:0; width:100%;height:80%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <h3 style="color: #FFFFFF">Locate Us</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.30229418104116!2d36.80836374419173!3d-1.2709844117745908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f176ceaf30a91%3A0x6e99c375b66381be!2sGlobal%20Trade%20Center%20Office%20Tower!5e0!3m2!1sen!2snl!4v1706770477038!5m2!1sen!2snl" style="border:0; width:100%;height:80%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="col-md-3 w3agile_footer_grid">
                 <h3 style="color: #FFFFFF">Links</h3>
@@ -197,7 +197,7 @@
                     <li class="mb-3"><a class="text-muted fw-bold text-decoration-none" href="../contact.php">Contact</a></li>
                 </ul>
             </div>
-            
+
         </div>
         <div class="row bg-dark pt-3">
             <div class="col-md-8">
@@ -238,7 +238,58 @@
             </div>
         </div>
     </div>
+    <!-- js -->
+    <script type="text/javascript" src="{{asset('storage/js/jquery-2.1.4.min.js')}}"></script>
+    <!-- //js -->
+    <script src="{{asset('storage/js/jquery.vide.min.js')}}"></script>
+    <script src="{{asset('storage/js/responsiveslides.min.js')}}"></script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function() {
+            // Slideshow 4
+            $("#slider4").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: false,
+                speed: 500,
+                namespace: "callbacks",
+                before: function() {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function() {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
 
+        });
+    </script>
+
+    <!-- Stats-Number-Scroller-Animation-JavaScript -->
+    <script src="{{asset('storage/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('storage/js/counterup.min.js')}}"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000,
+            });
+        });
+    </script>
+    <!-- //Stats-Number-Scroller-Animation-JavaScript -->
+
+    <!-- flexSlider -->
+    <link rel="stylesheet" href="{{asset('storage/css/flexslider.css')}}" type="text/css" media="screen" property="" />
+    <script defer src="{{asset('storage/js/jquery.flexslider.js')}}"></script>
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function(slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 

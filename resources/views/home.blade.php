@@ -1,6 +1,60 @@
 @extends('layouts.app',['title'=>'Home'])
 @section('content')
 <div>
+    <audio autoplay>
+        <source src="sam.mp3" type="audio/mpeg">
+    </audio>
+    <div class="banner_top" id="home">
+        <div data-vide-bg="{{asset('storage/video/real_estate')}}">
+
+            <div class="center-container" style="margin-top:0px;padding-top:0px;">
+                <!--/slider-->
+                <div class="banner_wthree_agile_info">
+                    <div class="slider">
+                        <div class="callbacks_container">
+                            <ul class="rslides callbacks callbacks1" id="slider4">
+                                <li>
+                                    <div class="agileits-banner-info">
+                                        <h4>Welcome to</h4>
+                                        <h3 style="font-size:6vw;">Sampesa Group Ltd</h3>
+                                        <p></p>
+                                        <div class="more">
+                                            
+                                            <a href="#" data-toggle="modal" data-target="#appointmentModal" class="btn-blink" style="text-decoration:none;color: #528ac5;padding:10px 20px 10px 20px;">Book Appointment</a>
+                                            <a href="tell-us-your-need.php" class="btn-blink" style="text-decoration:none;color: #528ac5;padding:10px 20px 10px 20px;">Enquire About a Service</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="agileits-banner-info">
+                                        <h4>Our motto is</h4>
+                                        <h3 style="font-size: 4vw;">"We give opportunity before it becomes obvious."</h3>
+                                        <p></p>
+                                        <div class="more">
+                                            <a href="#" data-toggle="modal" data-target="#appointmentModal" class="btn-blink" style="text-decoration:none;color: #528ac5;padding:10px 20px 10px 20px;">Book Appointment</a>
+                                            <a href="tell-us-your-need.php" class="btn-blink" style="text-decoration:none;color: #528ac5;padding:10px 20px 10px 20px;">Enquire About a Service</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="agileits-banner-info">
+                                        <h4>Our Values</h4>
+                                        <h3 style="font-size: 4vw;">"Integrity, Reliability & Quality"</h3>
+                                        <p></p>
+                                        <div class="more">
+                                            <a href="#" data-toggle="modal" data-target="#appointmentModal" class="btn-blink" style="text-decoration:none;color: #528ac5;padding:10px 20px 10px 20px;">Book Appointment</a>
+                                            <a href="tell-us-your-need.php" class="btn-blink" style="text-decoration:none;color: #528ac5;padding:10px 20px 10px 20px;">Enquire About a Service</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--//slider-->
+            </div>
+        </div>
+    </div>
     <div class="banner-bottom">
         <div class="container">
             <div class="row">
@@ -401,7 +455,7 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-            
+
         </div>
 
     </div>
