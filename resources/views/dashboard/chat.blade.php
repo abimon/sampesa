@@ -15,18 +15,18 @@
             <!-- List -->
             <div class="scrollable">
               @foreach($users as $k=>$user)
+              <a href="{{route('chat.show',$user->id)}}" style="text-decoration:none; color:black;">
               <div class="row m-2 d-flex justify-content-between">
-                <div class="col-5 mt-3">
-                  <a href="{{route('chat.show',$user->id)}}">
+                  <div class="col-5 mt-3">
                     <h6 class="">{{$user->fname}}</h6>
                     @foreach($chats as $chat)
                     @if($chat['user_id'] == ($user->id))
                     <small class="fw-bold text-dark">{{$chat['message']}}</small>
                     @endif
                     @endforeach
-                  </a>
-                </div>
+                  </div>
               </div>
+              </a>
               <hr>
               @endforeach
             </div>
@@ -44,8 +44,9 @@
                   </a>
                 </div>
                 <div class="col-4">
+                  @if($sender!=null)
                   <h6 class="lh-1 mB-0">{{$sender->sname}} {{$sender->fname}}</h6>
-
+                  @endif
                 </div>
 
                 <div class="col-3 row">
@@ -89,6 +90,7 @@
               </div>
             </div>
             <div class="layer w-100">
+              @if($sender)
               <form action="{{route('chat.store',['userId'=>($sender->id)])}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
@@ -96,6 +98,7 @@
                   <button class="input-group-text btn-info" type="submit"><i class="fa fa-paper-plane"></i></span>
                 </div>
               </form>
+              @endif
             </div>
           </div>
         </div>
