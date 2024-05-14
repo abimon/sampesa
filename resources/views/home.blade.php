@@ -1,9 +1,8 @@
 @extends('layouts.app',['title'=>'Home'])
 @section('content')
 <div>
-    <audio autoplay>
-        <source src="sam.mp3" type="audio/mpeg">
-    </audio>
+    
+    <audio src="{{asset('storage/audio/sam.mp3')}}" autoplay></audio>
     <div class="banner_top" id="home">
         <div data-vide-bg="{{asset('storage/video/real_estate')}}">
 
