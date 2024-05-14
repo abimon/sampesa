@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,12 +23,16 @@ Route::middleware('auth')->group(function(){
             return view('auth.step-two');
         }
         else{
-            return view('layouts.dashboard');
+            return view('dashboard.index');
         }
     });
     Route::resources([
         'user'=>UserController::class,
+        'chat'=>MessageController::class,
     ]);
+    Route::get('/profile',function(){
+        return view('dashboard.user.profile');
+    });
 });
 Route::get('/log', function(){
     return url()->previous();
