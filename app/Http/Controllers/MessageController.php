@@ -14,7 +14,13 @@ class MessageController extends Controller
     public function index()
     {
         $users = User::where('id','!=',Auth()->user()->id)->get();
-        $messages = Message::all();
+        $message = Message::where('recepient_id',Auth()->user()->id)->orderBy('created_at','desc')->first();
+        $sender = $message->sender;
+        $messages = Message::where([['recepient_id',Auth()->user()->id],['sender_id',$message->sender_id]])->orWhere([['sender_id',Auth()->user()->id],['recepient_id',$message->sender_id]])->get();
+        foreach($messages as $message){
+            $message->isRead = true;
+            $message->update();
+        }
         $chats = [];
         foreach($users as $user){
            $chat= Message::where('recepient_id',$user->id)->orWhere('sender_id',$user->id)->orderBy('created_at','desc')->first();
@@ -23,8 +29,7 @@ class MessageController extends Controller
            }
            
         }
-        // return $chats;
-        return view('dashboard.chat', compact('users', 'messages','chats'));
+        return view('dashboard.chat', compact('users', 'messages','sender','chats'));
     }
 
     public function create()
@@ -45,9 +50,25 @@ class MessageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Message $message)
+    public function show($id)
     {
-        //
+        $users = User::where('id','!=',Auth()->user()->id)->get();
+        $sender = User::findOrFail($id);
+        
+        $chats = [];
+        foreach($users as $user){
+           $chat= Message::where('recepient_id',$user->id)->orWhere('sender_id',$user->id)->orderBy('created_at','desc')->first();
+           if($chat!=null){
+            array_push($chats,['message'=>$chat->message,'user_id'=>$user->id]);
+           }
+           
+        }
+        $messages = Message::where([['recepient_id',Auth()->user()->id],['sender_id',$id]])->orWhere([['sender_id',Auth()->user()->id],['recepient_id',$id]])->get();
+        foreach($messages as $message){
+            $message->isRead = true;
+            $message->update();
+        }
+        return view('dashboard.chat', compact('users', 'messages','sender','chats'));
     }
 
     /**

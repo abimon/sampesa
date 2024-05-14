@@ -242,10 +242,12 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
+                                @if(Auth()->user()->messages->where('isRead',false)->count()>0)
                                 <span class="badge badge-danger badge-counter">{{Auth()->user()->messages->where('isRead',false)->count()}}</span>
+                                @endif
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
@@ -253,7 +255,7 @@
                                     Message Center
                                 </h6>
                                 @foreach(Auth()->user()->messages->where('isRead',false) as $message)
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                <a class="dropdown-item d-flex align-items-center" href="{{route('chat.show',$message->sender->id)}}">
                                     <div class="font-weight-bold">
                                         <div class="text-truncate">{{$message->message}}</div>
                                         <div class="small text-gray-500">{{$message->sender->sname}} {{$message->sender->fname}} · {{$message->created_at->diffForHumans()}}</div>
