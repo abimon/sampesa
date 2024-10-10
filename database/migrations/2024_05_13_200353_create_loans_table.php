@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('desc');
+            $table->string('cover');
             $table->timestamps();
+        });
+        Schema::create('loan_files', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('loan_id');
+            $table->string('file_path');
+            $table->timestamps();
+            $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');
         });
     }
 

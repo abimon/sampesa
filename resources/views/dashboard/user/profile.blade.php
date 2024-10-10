@@ -24,7 +24,7 @@
                         <div class="modal-body">
                             <div class="m-3 card p-3 border-dark bg-transparent" style="border-style:dashed;">
                                 <img id="out" src="{{asset('storage/users/passports/'.Auth()->user()->pp_path)}}" style="width: 100%; object-fit:contain;" />
-                                <input type="file" accept="image/jpeg, image/png, image/webp" name="passport" id="cover" style="display: none;" class="form-control" onchange="loadCoverFile(event)">
+                                <input type="file" accept="image/*" name="passport" id="cover" style="display: none;" class="form-control" onchange="loadCoverFile(event)">
                                 <div class="pt-2" id="desc">
                                     <div class="text-center" style="font-size: xxx-large; font-weight:bolder;">
                                         <i class="bi bi-upload"></i>
@@ -99,5 +99,36 @@
             </div>
         </form>
     </div>
+    <div class="col-md-6 p-3">
+        <img src="{{asset('storage/users/kraCerts/'.(Auth()->user()->kra_path))}}" style="height:50vh;width:100%;object-fit:cover" alt="">
+        @if(Auth()->user()->role=='Admin' && Auth()->user()->kra_approved==false)
+        <form action="{{route('user.update',Auth()->user()->id)}}" method="post">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="kra_approved" value="1">
+            <button type='submit' class="btn btn-success">Verify</button>
+        </form>
+        @elseif(Auth()->user()->kra_approved==false)
+        <button class="btn btn-danger"><i class="fa fa-close"></i> Not Verified</button>
+        @else
+        <h4 class="text-success">Verified</h4>
+        @endif
+    </div>
+    <div class="col-md-6 p-3">
+        <img src="{{asset('storage/users/idCards/'.(Auth()->user()->id_path))}}" style="height:50vh;width:100%;object-fit:cover" alt="">
+        @if(Auth()->user()->role=='Admin' && Auth()->user()->id_approved==false)
+        <form action="{{route('user.update',Auth()->user()->id)}}" method="post">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="id_approved" value="1">
+            <button type='submit' class="btn btn-success">Verify</button>
+        </form>
+        @elseif(Auth()->user()->id_approved==false)
+        <button class="btn btn-danger"><i class="fa fa-close"></i> Not Verified</button>
+        @else
+        <h4 class="text-success">Verified</h4>
+        @endif
+    </div>
+    <a href="/update_docs" class="'text-center"><button class="btn btn-primary">Update Documents</button></a>
 </div>
 @endsection

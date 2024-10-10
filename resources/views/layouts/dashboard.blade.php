@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('storage/front/images/favicon/favicon.ico')}}">
+    <link rel="icon" type="image/png" href="{{asset('storage/front/images/favicon/favicon.ico')}}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{asset('storage/front/images/favicon/favicon.ico')}}" sizes="16x16">
     <title>SAMPESA GROUP - {{$title}}</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -29,7 +31,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <img src="{{asset('storage/front/images/favicon/favicon.ico')}}" alt="">
                 </div>
                 <div class="sidebar-brand-text mx-3">{{Auth()->user()->role}} PANEL</div>
             </a>
@@ -43,8 +45,44 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            <hr class="sidebar-divider">
 
-            <!-- Divider -->
+            <!-- Engineers Heading -->
+            <div class="sidebar-heading">
+                CLIENTS
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#clients" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <div id="clients" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('clients.index')}}">Clients</a>
+                        <a class="collapse-item" href="{{route('staff.index')}}">Staff</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>My Services</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <a class="collapse-item" href="utilities-color.html">Colors</a>
+                        <a class="collapse-item" href="utilities-border.html">Borders</a>
+                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                    </div>
+                </div>
+            </li>
+
             <hr class="sidebar-divider">
 
             <!-- Engineers Heading -->
@@ -271,7 +309,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth()->user()->fname}} {{Auth()->user()->sname}} 
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth()->user()->fname}} {{Auth()->user()->sname}}
                                 </span>
                                 <img class="img-profile rounded-circle" src="{{asset('storage/users/passports/'.(Auth()->user()->pp_path))}}">
                             </a>
@@ -303,6 +341,9 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-grey-800 text-uppercase">{{$title}}</h1>
+                </div>
                     @yield('dashboard')
                 </div>
                 <!-- /.container-fluid -->
@@ -313,7 +354,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; SAMPESA GROUP LTD. {{date('Y')}}</span>
+                        <span>Copyright &copy; POINT OF SA. {{date('Y')}}</span>
                     </div>
                 </div>
             </footer>

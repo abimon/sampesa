@@ -12,7 +12,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view("dashboard.clients.index", compact("users"));
     }
 
     public function create()
@@ -25,9 +26,10 @@ class UserController extends Controller
         //
     }
 
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view("dashboard.user.user", compact("user"));
     }
 
     public function edit(string $id)

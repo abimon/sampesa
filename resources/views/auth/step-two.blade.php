@@ -8,9 +8,9 @@
             <form method="POST" action="{{ route('user.update',Auth()->user()->id) }}">
                 @csrf
                 @method('PUT')
+                <h3 class="text-start">Personal Information</h3>
+                <hr>
                 <div class="row">
-                    <h2 class="text-center">Personal Information</h2>
-                    <hr>
                     <div class="col-md-6 row mb-3">
                         <label for="sname" class="col-md-4 col-form-label text-md-end">{{ __('Surname') }}</label>
 
@@ -41,7 +41,7 @@
                         <label for="mname" class="col-md-4 col-form-label text-md-end">{{ __('Middle Name') }} <i>[Optional]</i></label>
 
                         <div class="col-md-8">
-                            <input id="mname" type="text" class="form-control @error('mname') is-invalid @enderror" name="mname" value="{{ old('mname') }}" required autocomplete="mname" autofocus>
+                            <input id="mname" type="text" class="form-control @error('mname') is-invalid @enderror" name="mname" value="{{ old('mname') }}"  autocomplete="mname" autofocus>
 
                             @error('mname')
                             <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                         <label for="contact" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
 
                         <div class="col-md-8">
-                            <select name="gender" id="" class="form-select" required>
+                            <select name="gender" id="" class="form-select form-control" required>
                                 <option value="">-----------Select Gender-----------</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -114,9 +114,10 @@
                         </div>
                     </div>
                 </div>
+                <h3 class="text-start">Postal Address</h3>
+                <hr>
                 <div class="row">
-                    <h2 class="text-center">Postal Address</h2>
-                    <hr>
+
                     <div class="col-md-6 row mb-3">
                         <label for="p_address" class="col-md-4 col-form-label text-md-end">{{ __('Postal Address') }}</label>
 
@@ -157,9 +158,10 @@
                         </div>
                     </div>
                 </div>
+                <h3 class="text-start">Physical Address</h3>
+                <hr>
                 <div class="row">
-                    <h2 class="text-center">Physical Address</h2>
-                    <hr>
+
                     <div class="col-md-6 row mb-3">
                         <label for="nationality" class="col-md-4 col-form-label text-md-end">{{ __('Nationality') }}</label>
 
