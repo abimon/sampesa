@@ -65,107 +65,72 @@
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>My Services</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
-
             <hr class="sidebar-divider">
 
             <!-- Engineers Heading -->
             <div class="sidebar-heading">
-                Engineers
+                My Department
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Engineering Services</span>
+                    <span>Meetings</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
             </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>My Services</span>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Reports</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Messages</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Tasks</span>
+                </a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!--Loan Client Heading -->
             <div class="sidebar-heading">
-                Loan Client
+                Human Resource
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#loans" aria-expanded="true" aria-controls="loans">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
                     <i class="fas fa-fw fa-bank"></i>
-
-                    <span>Loans</span>
+                    <span>Staff</span>
                 </a>
-                <div id="loans" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="staff" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Available Loan Services</h6>
-                        <a class="collapse-item" href="">Property Loan</a>
-                        <a class="collapse-item" href="">Personal Deposit Loan</a>
-                        <a class="collapse-item" href="">Logbook Loan</a>
-                        <a class="collapse-item" href="">Payslip(Salary) Loan</a>
-                        <a class="collapse-item" href="">Household Items Loan</a>
-                        <a class="collapse-item" href="">Stock & Bonds Loan</a>
-                        <a class="collapse-item" href="">Life Insurance Loan</a>
-                        <a class="collapse-item" href="">Personal Guarantor Loan</a>
-                        <a class="collapse-item" href="">Business Capital Loans</a>
-                        <a class="collapse-item" href="">Loan Buy-offs</a>
+                        <a class="collapse-item" href="">Roles</a>
+                        <a class="collapse-item" href="">Staff</a>
+                        <a class="collapse-item" href="">Leaves</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMyLoans" aria-expanded="true" aria-controls="collapseMyLoans">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#jobs" aria-expanded="true" aria-controls="jobs">
                     <i class="fas fa-fw fa-credit-card"></i>
-                    <span>My Loans</span>
+                    <span>Jobs</span>
                 </a>
-                <div id="collapseMyLoans" class="collapse" aria-labelledby="headingMyLoans" data-parent="#accordionSidebar">
+                <div id="jobs" class="collapse" aria-labelledby="headingMyLoans" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Manage My Loans</h6>
-                        <a class="collapse-item" href="">Apply New</a>
-                        <a class="collapse-item" href="">Repay Loan</a>
-                        <a class="collapse-item" href="">Loan Status</a>
-                        <a class="collapse-item" href="">Loan History</a>
+                        <a class="collapse-item" href="">Openings</a>
+                        <a class="collapse-item" href="">Applications</a>
+                        <a class="collapse-item" href="">Interviews</a>
                     </div>
                 </div>
             </li>
@@ -176,8 +141,6 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
-
         </ul>
         <!-- End of Sidebar -->
 

@@ -96,15 +96,16 @@
                                 <li><a href="/projects">Projects</a></li>
                                 <li><a href="/investor">Investor</a></li>
                                 <li><a href="/contact">Contact</a></li>
+                                <li>
+                                    <div class="mainmenu-right style2">
+                                        <div class="button">
+                                            <a class="btn-one" href="/login">Login<span class="flaticon-next"></span></a>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </nav>
-                    <div class="mainmenu-right style2">
-
-                        <div class="button">
-                            <a class="btn-one" href="/login">Login<span class="flaticon-next"></span></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </header>
