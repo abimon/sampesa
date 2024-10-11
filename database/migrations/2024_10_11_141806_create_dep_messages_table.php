@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('dep_messages', function (Blueprint $table) {
             $table->id();
-            $table->string(column: 'title');
-            $table->longText(column: 'jds');
+            $table->string('department');
+            $table->string('subject');
+            $table->string('message');
+            $table->unsignedBigInteger(column: 'sender_id');
             $table->timestamps();
+            
+            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('dep_messages');
     }
 };

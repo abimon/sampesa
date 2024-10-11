@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\roles;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
-class RolesController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $roles=roles::all();
-        return view("dashboard.hresource.roles",compact("roles"));
+        if(Auth()->user()->role =='Admin'){
+            $tasks = Task::all();
+        }
+        else{
+            $tasks = Task::where('to',Auth()->user()->id)->orWhere('from',Auth()->user()->id)->get();
+        }
+        return view("dashboard.tasks.index", compact("tasks"));
     }
 
     /**
@@ -29,17 +34,20 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        roles::create([
+        Task::create([
             'title'=>request('title'),
-            'jds'=>request('jds'),
+            'desc'=>request('desc'),
+            'to'=>request('to'),
+            'from'=>Auth()->user()->id,
+            'status'=>request('status'),
         ]);
-        return redirect()->back()->with('success','Role created successfully.');
+        return back()->with('success','Task created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(roles $roles)
+    public function show(Task $task)
     {
         //
     }
@@ -47,7 +55,7 @@ class RolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(roles $roles)
+    public function edit(Task $task)
     {
         //
     }
@@ -55,21 +63,16 @@ class RolesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($id)
+    public function update(Request $request, Task $task)
     {
-        roles::find($id)->update([
-            'title'=>request('title'),
-            'jds'=>request('jds'),
-        ]);
-        return redirect()->back()->with('success','Role updated successful.');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Task $task)
     {
-        roles::destroy($id);
-        return redirect()->back()->with('success','Role deleted successfully.');
+        //
     }
 }

@@ -43,27 +43,28 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard</span>
+                </a>
             </li>
             <hr class="sidebar-divider">
 
             <!-- Engineers Heading -->
             <div class="sidebar-heading">
-                CLIENTS
+                USER RECORDS
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#clients" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link" href="{{route('clients.index')}}">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Users</span>
+                    <span>Clients Records</span>
                 </a>
-                <div id="clients" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('clients.index')}}">Clients</a>
-                        <a class="collapse-item" href="{{route('staff.index')}}">Staff</a>
-                    </div>
-                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('staff.index')}}">
+                    <i class="fas fa-fw fa-id-card"></i>
+                    <span>Staff Records</span>
+                </a>
             </li>
             <hr class="sidebar-divider">
 
@@ -74,56 +75,54 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-cog"></i>
+                <a class="nav-link" href="{{route('meeting.index')}}">
+                    <i class="fas fa-fw fa-calendar-day"></i>
                     <span>Meetings</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-cog"></i>
+                <a class="nav-link" href="{{route('report.index')}}">
+                    <i class="fas fa-fw fa-file-lines"></i>
                     <span>Reports</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-cog"></i>
+                <a class="nav-link" href="{{route('message.index')}}">
+                    <i class="fas fa-fw fa-comments"></i>
                     <span>Messages</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-cog"></i>
+                <a class="nav-link" href="{{route('task.index')}}">
+                    <i class="fas fa-fw fa-list-check"></i>
                     <span>Tasks</span>
                 </a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <!--Loan Client Heading -->
+            <!--HR Heading -->
             <div class="sidebar-heading">
                 Human Resource
             </div>
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
-                    <i class="fas fa-fw fa-bank"></i>
+                    <i class="fas fa-fw fa-clipboard-user"></i>
                     <span>Staff</span>
                 </a>
                 <div id="staff" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Roles</a>
-                        <a class="collapse-item" href="">Staff</a>
+                        <a class="collapse-item" href="{{route('roles.index')}}">Roles</a>
+                        <a class="collapse-item" href="{{route('staff.index')}}">Staff</a>
                         <a class="collapse-item" href="">Leaves</a>
                     </div>
                 </div>
             </li>
-
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#jobs" aria-expanded="true" aria-controls="jobs">
-                    <i class="fas fa-fw fa-credit-card"></i>
+                    <i class="fas fa-fw fa-users-rays"></i>
                     <span>Jobs</span>
                 </a>
                 <div id="jobs" class="collapse" aria-labelledby="headingMyLoans" data-parent="#accordionSidebar">
@@ -136,7 +135,149 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
+            <!--Finance-->
+            <div class="sidebar-heading">
+                Finance
+            </div>
+            <!-- Incomes Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#income" aria-expanded="true" aria-controls="income">
+                    <i class="fas fa-fw fa-bank"></i>
+                    <span>Income</span>
+                </a>
+                <div id="income" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">Rent Collections</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Expenses Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Expenses" aria-expanded="true" aria-controls="Expenses">
+                    <i class="fas fa-fw fa-receipt"></i>
+                    <span>Expenses</span>
+                </a>
+                <div id="Expenses" class="collapse" aria-labelledby="headingMyLoans" data-parent="#accordionSidebar">
+                    <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">Payroll</a>
+                        <a class="collapse-item" href="">Pay Change</a>
+                        <a class="collapse-item" href="">Petty Cash</a>
+                        <a class="collapse-item" href="">Other Expenses</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Loans -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#loans" aria-expanded="true" aria-controls="loans">
+                    <i class="fas fa-fw fa-hand-holding-dollar"></i>
+                    <span>Loans</span>
+                </a>
+                <div id="loans" class="collapse" aria-labelledby="headingMyLoans" data-parent="#accordionSidebar">
+                    <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">Available Loans</a>
+                        <a class="collapse-item" href="">Applications</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <!--Project Manager Heading -->
+            <div class="sidebar-heading">
+                Project Manager
+            </div>
+            <!-- Projects Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#projects" aria-expanded="true" aria-controls="projects">
+                    <i class="fas fa-fw fa-screwdriver-wrench"></i>
+                    <span>Projects</span>
+                </a>
+                <div id="projects" class="collapse" aria-labelledby="projects" data-parent="#accordionSidebar">
+                    <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">Open Projects</a>
+                        <a class="collapse-item" href="">Bids</a>
+                        <a class="collapse-item" href="">Ongoing Projects</a>
+                        <a class="collapse-item" href="">Completed Projects</a>
+                        <a class="collapse-item" href="">Suspended Projects</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Contractors Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contractors" aria-expanded="true" aria-controls="contractors">
+                    <i class="fas fa-fw fa-users-gear"></i>
+                    <span>Contractors</span>
+                </a>
+                <div id="contractors" class="collapse" aria-labelledby="contractors" data-parent="#accordionSidebar">
+                    <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">All Contractors</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Quary Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#quary" aria-expanded="true" aria-controls="quary">
+                    <i class="fas fa-fw fa-person-digging"></i>
+                    <span>Quary</span>
+                </a>
+                <div id="quary" class="collapse" aria-labelledby="quary" data-parent="#accordionSidebar">
+                    <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">Sales</a>
+                        <a class="collapse-item" href="">Purchases</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <!--Loan HR Heading -->
+            <div class="sidebar-heading">
+                Engineers, Architects & Technicians
+            </div>
+            <!-- Senior Engineers Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#jengs" aria-expanded="true" aria-controls="jengs">
+                    <i class="fas fa-fw fa-user-tie"></i>
+                    <span>Seniors</span>
+                </a>
+                <div id="jengs" class="collapse" aria-labelledby="jengs" data-parent="#accordionSidebar">
+                    <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">Structural Engineer</a>
+                        <a class="collapse-item" href="">Mechanical Engineer</a>
+                        <a class="collapse-item" href="">Electrical Engineer</a>
+                        <a class="collapse-item" href="">Quantity Surveyor Engineer</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Junior Engineers Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#sengs" aria-expanded="true" aria-controls="sengs">
+                    <i class="fas fa-fw fa-user-group"></i>
+                    <span>Juniors</span>
+                </a>
+                <div id="sengs" class="collapse" aria-labelledby="sengs" data-parent="#accordionSidebar">
+                    <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">Structural Engineer</a>
+                        <a class="collapse-item" href="">Mechanical Engineer</a>
+                        <a class="collapse-item" href="">Electrical Engineer</a>
+                        <a class="collapse-item" href="">Quantity Surveyor Engineer</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#gis" aria-expanded="true" aria-controls="gis">
+                    <i class="fas fa-fw fa-location-dot"></i>
+                    <span>GIS</span>
+                </a>
+                <div id="gis" class="collapse" aria-labelledby="gis" data-parent="#accordionSidebar">
+                    <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">Projects</a>
+                        <a class="collapse-item" href="">Calendar</a>
+                        <a class="collapse-item" href="">Report</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -317,7 +458,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; POINT OF SA. {{date('Y')}}</span>
+                        <span>Copyright &copy; SAMPESA GROUP {{date('Y')}}</span>
                     </div>
                 </div>
             </footer>

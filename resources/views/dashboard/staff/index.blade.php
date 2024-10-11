@@ -3,7 +3,7 @@
 <!-- Page Heading -->
 
 <div class="container">
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
             <th>#</th>
             <th>Staff's Name</th>
@@ -12,12 +12,14 @@
             <th>ID</th>
             <th>Role</th>
             <th>Address</th>
+            <th>Change Role</th>
+            <th>View Profile</th>
         </thead>
         <tbody>
             @foreach ($staffs as $key=>$staff)
             <tr>
                 <td>{{$key+1}}</td>
-                <td>{{$staff->fname}} {{$staff->lname}}</td>
+                <td>{{$staff->fname}} {{$staff->sname}}</td>
                 <td>{{$staff->nationality}}</td>
                 <td>{{$staff->contact}}<br> <i>{{$staff->email}}</i></td>
                 <td>{{$staff->idNumber}}</td>
@@ -28,7 +30,6 @@
                         <i class="fas fa-plus fa-sm text-white-50"></i> Change Role
                     </a>
                     <!-- Button trigger modal -->
-
                     <!-- Modal -->
                     <div class="modal fade" id="Staff{{$staff->id}}" tabindex="-1" aria-labelledby="Staff{{$staff->id}}Label" aria-hidden="true">
                         <div class="modal-dialog">
@@ -43,6 +44,8 @@
                                     <div class="modal-body">
                                         <div class="form-floating">
                                             <select name="role" id="" class="form-select form-control">
+                                                <option value="Admin" {{($staff->role=='Admin')?'selected':''}}>Admin</option>
+                                                <option value="Director" {{($staff->role=='Director')?'selected':''}}>Director</option>
                                                 @foreach (App\Models\roles::select('title')->get() as $role)
                                                 <option value="{{$role->title}}" {{($staff->role==$role->title)?'selected':''}}>{{$role->title}}</option>
                                                 @endforeach
@@ -50,7 +53,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save changes</button>
                                     </div>
                                 </form>

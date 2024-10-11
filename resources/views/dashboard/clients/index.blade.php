@@ -2,7 +2,7 @@
 @section('dashboard')
 <!-- Page Heading -->
 <div class="container">
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
             <th>#</th>
             <th>Client's Name</th>
@@ -10,12 +10,14 @@
             <th>Contact</th>
             <th>ID</th>
             <th>Address</th>
+            <th>Add Staff</th>
+            <th>View</th>
         </thead>
         <tbody>
             @foreach ($clients as $key=>$client)
             <tr>
                 <td>{{$key+1}}</td>
-                <td>{{$client->fname}} {{$client->lname}}</td>
+                <td>{{$client->fname}} {{$client->sname}}</td>
                 <td>{{$client->nationality}}</td>
                 <td>{{$client->contact}}<br> <i>{{$client->email}}</i></td>
                 <td>{{$client->idNumber}}</td>

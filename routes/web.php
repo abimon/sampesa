@@ -1,12 +1,18 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DepMessageController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Admin as AdminMiddleware;
+use App\Models\depMessage;
 
 Route::get('/', function () {
     $data = [
@@ -167,6 +173,11 @@ Route::middleware('auth')->group(function () {
     Route::resources([
         'user' => UserController::class,
         'chat' => MessageController::class,
+        'roles'=> RolesController::class,
+        'meeting'=>MeetingController::class,
+        'task'=>TaskController::class,
+        'report'=>ReportController  ::class,
+        'message'=>DepMessageController::class,
     ]);
     Route::middleware(AdminMiddleware::class)->group(function () {
         Route::resources([
