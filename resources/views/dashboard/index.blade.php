@@ -9,7 +9,7 @@
 </div> -->
 
 <!-- Content Row -->
-<div class="row">
+<div class="row" style="max-height:70vh;">
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
@@ -19,7 +19,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Meetings & Appointments</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Models\Meeting::where('department',Auth()->user()->role)->count()}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -53,11 +53,11 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Reports
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Tasks
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">5</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{App\Models\Task::where('to',Auth()->user()->id)->count()}}</div>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Departmental Messages</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Models\depMessage::where('department',Auth()->user()->role)->count()}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>

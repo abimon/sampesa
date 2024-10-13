@@ -13,6 +13,14 @@ class Task extends Model
         'desc',
         'to',
         'from',
+        'due_date',
         'status',
     ];
+    public function assigner(){
+        return $this->belongsTo(User::class,'from','id');
+    }
+    public function assignee()
+    {
+        return $this->belongsTo(User::class, 'to', 'id');
+    }
 }

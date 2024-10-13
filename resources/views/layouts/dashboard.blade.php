@@ -26,7 +26,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar" style="max-height:100vh; overflow:scroll">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
@@ -81,12 +81,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('report.index')}}">
-                    <i class="fas fa-fw fa-file-lines"></i>
-                    <span>Reports</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{{route('message.index')}}">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Messages</span>
@@ -96,6 +90,12 @@
                 <a class="nav-link" href="{{route('task.index')}}">
                     <i class="fas fa-fw fa-list-check"></i>
                     <span>Tasks</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('report.index')}}">
+                    <i class="fas fa-fw fa-file-lines"></i>
+                    <span>Reports</span>
                 </a>
             </li>
             <!-- Divider -->
@@ -113,9 +113,10 @@
                 </a>
                 <div id="staff" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('department.index')}}">Departments</a>
                         <a class="collapse-item" href="{{route('roles.index')}}">Roles</a>
                         <a class="collapse-item" href="{{route('staff.index')}}">Staff</a>
-                        <a class="collapse-item" href="">Leaves</a>
+                        <a class="collapse-item" href="{{route('leave.index')}}">Leaves</a>
                     </div>
                 </div>
             </li>
@@ -193,11 +194,12 @@
                 </a>
                 <div id="projects" class="collapse" aria-labelledby="projects" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Open Projects</a>
-                        <a class="collapse-item" href="">Bids</a>
-                        <a class="collapse-item" href="">Ongoing Projects</a>
-                        <a class="collapse-item" href="">Completed Projects</a>
-                        <a class="collapse-item" href="">Suspended Projects</a>
+                        <a class="collapse-item" href="{{route('project.index')}}">All Projects</a>
+                        <a class="collapse-item" href="{{route('project.show','Open')}}">Open Projects</a>
+                        <!-- <a class="collapse-item" href="">Bids</a> -->
+                        <a class="collapse-item" href="{{route('project.show','Ongoing')}}">Ongoing Projects</a>
+                        <a class="collapse-item" href="{{route('project.show','Completed')}}">Completed Projects</a>
+                        <a class="collapse-item" href="{{route('project.show','Suspended')}}">Suspended Projects</a>
                     </div>
                 </div>
             </li>

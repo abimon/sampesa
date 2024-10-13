@@ -1,4 +1,4 @@
-@extends('layouts.dashboard',['title'=>'Roles'])
+@extends('layouts.dashboard',['title'=>($department->title).' Positions'])
 @section('dashboard')
 <div class="container">
     <div class="d-flex justify-content-end mb-1">
@@ -10,7 +10,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="roleLabel">Create a role</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{route('roles.store')}}" method="post">
                         @csrf
@@ -19,11 +19,13 @@
                                 <label for="location" class="text-capitalize">Role</label>
                                 <input type="text" name="title" class="form-control">
                             </div>
-                            <label for="">Description</label>
-                            <textarea name="jds" id="editor0" class="form-control"></textarea>
+                            <label for="">Job Description</label>
+                            <textarea name="job_description" id="editor0" class="form-control"></textarea>
+                            <label for="">Job Requirements</label>
+                            <textarea name="requirements" id="editor1" class="form-control"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
@@ -32,7 +34,7 @@
         </div>
     </div>
     <div class="row">
-        @foreach ($roles as $role)
+        @foreach ($department->roles as $role)
         <div class="col-lg-4 col-md-6 p-2 ">
             <div class="card h-100">
                 <div class="card-body ">
@@ -44,12 +46,38 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#Role{{$role->id}}">Edit</a></li>
                                 <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#new">Assign</a></li>
-
+                                <li><a class="dropdown-item" href="{{route('department.show',$role->department->id)}}">View Department</a></li>
+                                <div class="modal fade" id="Role{{$role->id}}" tabindex="-1" aria-labelledby="roleLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="roleLabel">Edit {{$role->title}}</h1>
+                                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form action="{{route('roles.update',$role->id)}}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="modal-body">
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" name="title" value="{{$role->title}}" class="form-control">
+                                                        <label for="location" class="text-capitalize">Role</label>
+                                                    </div>
+                                                    <label for="">Description</label>
+                                                    <textarea name="job_description" id="editor{{$role->id}}" class="form-control">{{$role->job_description}}</textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </ul>
                         </div>
                     </div>
                     <div class="card-text">
-                        <?php echo html_entity_decode(mb_substr($role->jds, 0, 300));?>
+                        <?php echo html_entity_decode($role->job_description); ?>
                     </div>
                 </div>
             </div>
@@ -59,7 +87,7 @@
 </div>
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/super-build/ckeditor.js"></script>
 <script>
-    var i = 1;
+    var i = 2;
     for (j = 0; j < i; j++) {
         CKEDITOR.ClassicEditor
             .create(document.getElementById("editor" + j), {
@@ -193,31 +221,3 @@
     }
 </script>
 @endsection
-@foreach ($roles as $role)
-<div class="modal fade" id="Role{{$role->id}}" tabindex="-1" aria-labelledby="roleLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="roleLabel">Edit {{$role->title}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="{{route('roles.update',$role->id)}}" method="post">
-                @csrf
-                @method('PUT')
-                <div class="modal-body">
-                    <div class="form-floating mb-2">
-                        <input type="text" name="title" value="{{$role->title}}" class="form-control">
-                        <label for="location" class="text-capitalize">Role</label>
-                    </div>
-                    <label for="">Description</label>
-                    <textarea name="jds" id="editor{{$role->id}}" class="form-control">{{$role->jds}}</textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-@endforeach

@@ -14,7 +14,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = User::where('role','Client')->get();
-        return view('dashboard.clients.index', compact('clients'));
+        return view('dashboard.hresource.clients', compact('clients'));
     }
 
     /**

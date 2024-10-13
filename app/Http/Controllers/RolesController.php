@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\departments;
 use App\Models\roles;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,15 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles=roles::all();
-        return view("dashboard.hresource.roles",compact("roles"));
+        if (Auth()->user()->role != 'Admin') {
+            $role = roles::where('title', Auth()->user()->role)->first();
+            $department = departments::findOrFail($role->dep_id);
+            return view("dashboard.hresource.roles", compact("department"));
+           
+        }
+        $deps = departments::all();
+        return view("dashboard.hresource.departments", compact("deps"));
+        
     }
 
     /**
@@ -30,10 +38,12 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         roles::create([
-            'title'=>request('title'),
-            'jds'=>request('jds'),
+            'dep_id' => request('dep_id'),
+            'title' => request('title'),
+            'job_description' => request('job_description'),
+            'job_requirements' => request('requirements'),
         ]);
-        return redirect()->back()->with('success','Role created successfully.');
+        return redirect()->back()->with('success', 'Role created successfully.');
     }
 
     /**
@@ -58,10 +68,11 @@ class RolesController extends Controller
     public function update($id)
     {
         roles::find($id)->update([
-            'title'=>request('title'),
-            'jds'=>request('jds'),
+            'title' => request('title'),
+            'job_description' => request('job_description'),
+            'job_requirements' => request('requirements'),
         ]);
-        return redirect()->back()->with('success','Role updated successful.');
+        return redirect()->back()->with('success', 'Role updated successful.');
     }
 
     /**
@@ -70,6 +81,6 @@ class RolesController extends Controller
     public function destroy($id)
     {
         roles::destroy($id);
-        return redirect()->back()->with('success','Role deleted successfully.');
+        return redirect()->back()->with('success', 'Role deleted successfully.');
     }
 }

@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Staff;
-use App\Models\User;
+use App\Models\vacancies;
 use Illuminate\Http\Request;
 
-class StaffController extends Controller
+class VacanciesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $staffs = User::where('role','!=','Client')->get();
-        return view('dashboard.hresource.staff', compact('staffs'));
+        //
     }
 
     /**
@@ -36,7 +34,7 @@ class StaffController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Staff $staff)
+    public function show(vacancies $vacancies)
     {
         //
     }
@@ -44,7 +42,7 @@ class StaffController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Staff $staff)
+    public function edit(vacancies $vacancies)
     {
         //
     }
@@ -52,7 +50,7 @@ class StaffController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Staff $staff)
+    public function update(Request $request, vacancies $vacancies)
     {
         //
     }
@@ -60,7 +58,7 @@ class StaffController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Staff $staff)
+    public function destroy(vacancies $vacancies)
     {
         //
     }

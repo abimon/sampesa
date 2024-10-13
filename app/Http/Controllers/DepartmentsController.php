@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobApplication;
+use App\Models\departments;
+use App\Models\roles;
 use Illuminate\Http\Request;
 
-class JobApplicationController extends Controller
+class DepartmentsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $deps = departments::all();
+        return view("dashboard.hresource.departments", compact("deps"));
     }
 
     /**
@@ -28,21 +30,28 @@ class JobApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        departments::create(
+            [
+                'title'=>request('title'),
+                'type'=>request('type'),
+            ]
+        );
+        return back()->with('success','Department created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(JobApplication $jobApplication)
+    public function show($id)
     {
-        //
+        $department= departments::find($id);
+        return view('dashboard.hresource.roles', compact('department'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobApplication $jobApplication)
+    public function edit(departments $departments)
     {
         //
     }
@@ -50,7 +59,7 @@ class JobApplicationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobApplication $jobApplication)
+    public function update(Request $request, departments $departments)
     {
         //
     }
@@ -58,7 +67,7 @@ class JobApplicationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobApplication $jobApplication)
+    public function destroy(departments $departments)
     {
         //
     }

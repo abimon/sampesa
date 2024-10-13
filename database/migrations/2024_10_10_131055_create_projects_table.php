@@ -15,11 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string(column: 'title');
             $table->string(column: 'category');
-            $table->integer(column: 'est_value')->default(0);
-            $table->integer(column: 'progress')->default(0);
-            $table->string(column: 'doc_path')->nullable();
+            $table->string(column:'client_name');
+            $table->string(column:'client_contact');
+            $table->string(column:'client_id');
+            $table->string(column:'county');
+            $table->string(column:'town');
+            $table->string(column:'area');
+            $table->string(column:'status')->default('Open');
+            $table->string(column:'start_date')->nullable();
             $table->string(column: 'cover')->nullable();
-            $table->unsignedBigInteger(column: 'client_id');
             $table->timestamps();
         });
     }

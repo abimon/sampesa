@@ -18,7 +18,7 @@ class TaskController extends Controller
         else{
             $tasks = Task::where('to',Auth()->user()->id)->orWhere('from',Auth()->user()->id)->get();
         }
-        return view("dashboard.tasks.index", compact("tasks"));
+        return view("dashboard.department.task", compact("tasks"));
     }
 
     /**
@@ -38,8 +38,9 @@ class TaskController extends Controller
             'title'=>request('title'),
             'desc'=>request('desc'),
             'to'=>request('to'),
+            'due_date'=>request('due_date'),
             'from'=>Auth()->user()->id,
-            'status'=>request('status'),
+            'status'=>'Not completed',
         ]);
         return back()->with('success','Task created successfully.');
     }
@@ -63,16 +64,35 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update($id)
     {
-        //
+        // dd(request()->all());
+        $task=Task::findOrFail($id);
+        if(request('title')!=null){
+            $task->title=request('title');
+        }
+        if(request('desc')!=null){
+            $task->desc=request('desc');
+        }
+        if(request('to')!=null){
+            $task->to=request('to');
+        }
+        if(request('status')!=null){
+            $task->status=request('status');
+        }
+        if(request(key: 'due_date')!=null){
+            $task->due_date=request('due_date');
+        }
+        $task->update();
+        return back()->with('success','Task successfully updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        //
+        Task::destroy($id);
+        return back()->with('success','Task deleted successfully');
     }
 }

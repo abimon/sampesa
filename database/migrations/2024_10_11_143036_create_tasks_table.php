@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('desc');
             $table->unsignedBigInteger('to');
             $table->unsignedBigInteger('from');
+            $table->string('due_date');
             $table->string('status');
             $table->timestamps();
             $table->foreign('from')->references('id')->on('users');

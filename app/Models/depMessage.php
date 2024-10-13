@@ -14,4 +14,8 @@ class depMessage extends Model
         'message',
         'sender_id',
     ];
+
+    public function sender(){
+        return $this->belongsTo(User::class,'sender_id','id');
+    }
 }

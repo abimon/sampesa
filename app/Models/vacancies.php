@@ -5,7 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JobApplication extends Model
+class vacancies extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        "role_id",
+        "openings",
+        'deadline',
+        'app_mode'
+    ];
 }
