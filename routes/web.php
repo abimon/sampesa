@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\DepMessageController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\MessageController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VacanciesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Admin as AdminMiddleware;
@@ -150,6 +152,9 @@ Route::get('/about', function () {
 Route::get('/blog', function () {
     return view('front.blog');
 });
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/career', 'career');
+});
 Route::get('/services/{service}', function ($service) {
     return view('front.services.'.$service);
 });
@@ -184,6 +189,9 @@ Route::middleware('auth')->group(function () {
         'project'=>ProjectController::class,
         'department'=>DepartmentsController::class,
         'leave'=>LeaveController::class,
+        'vacancy'=>VacanciesController::class,
+        'applications'=>VacanciesController::class,
+        'interviews'=>VacanciesController::class,
     ]);
     Route::middleware(AdminMiddleware::class)->group(function () {
         Route::resources([

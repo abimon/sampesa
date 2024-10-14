@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Career'])
 @section('content')
         <!--Start breadcrumb area-->
         <section class="breadcrumb-area style2" style="background-image: url(storage/front/images/resources/breadcrumb-bg-2.jpg);">
@@ -27,7 +27,33 @@
        
        	<div style="position:relative;">
     		<div class="container" style="background:transparent;padding-top:20px;">	
-    		    
+    		    <h2 class="m-3 text-center">Job Opportunities</h2>
+                <hr>
+                @foreach ($jobs as $job)
+                <div class="card p-3 mb-2">
+                    <div class="row">
+                        <h6 class="col-md-3 mb-2">Position: <br><span class="text-uppercase">{{$job->role->title}}</span></h6>
+                        <h6 class="col-md-3 mb-2">Positions available: <br>{{$job->openings}}</h6>
+                        <h6 class="col-md-3 mb-2">Deadline: <br>{{date_format(date_create($job->deadline),'jS F, Y')}}</h6>
+                        <h6 class="col-md-3 mb-2">Mode: <br>{{$job->app_mode}}</h6>
+                    </div>
+                    <hr>
+                    <div>
+                        <h6>Job Description</h6>
+                        <div>{{$job->role->job_description}}</div>
+                    </div>
+                    <hr>
+                    <div>
+                        <h6>Job Requirements</h6>
+                        <div>{{$job->role->job_requirements}}</div>
+                    </div>
+                    @if (($job->app_mode=="Online Form")||($job->app_mode=="Both Online and Physical"))
+                    <div class="modal-footer">
+                        <a href=""><button class="btn btn-primary">Apply</button></a>
+                    </div>
+                    @endif
+                </div>
+                @endforeach
     		</div>
 		</div>
         <script>

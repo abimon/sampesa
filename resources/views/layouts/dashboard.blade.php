@@ -128,9 +128,9 @@
                 </a>
                 <div id="jobs" class="collapse" aria-labelledby="headingMyLoans" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Openings</a>
-                        <a class="collapse-item" href="">Applications</a>
-                        <a class="collapse-item" href="">Interviews</a>
+                        <a class="collapse-item" href="{{route('vacancy.index')}}">Job Adverts</a>
+                        <a class="collapse-item" href="{{route('applications.index')}}">Applications</a>
+                        <a class="collapse-item" href="{{route('interviews.index')}}">Interviews</a>
                     </div>
                 </div>
             </li>

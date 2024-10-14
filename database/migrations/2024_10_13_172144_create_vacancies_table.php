@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('openings');
             $table->string('deadline');
             $table->string('app_mode');
+            $table->string('status')->default('Open');
             $table->timestamps();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });

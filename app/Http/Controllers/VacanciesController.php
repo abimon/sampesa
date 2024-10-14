@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\roles;
 use App\Models\vacancies;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class VacanciesController extends Controller
      */
     public function index()
     {
-        //
+        $vacancies = vacancies::all();
+        $roles = roles::all();
+        return view("dashboard.hresource.jobs", compact("vacancies","roles"));
     }
 
     /**
@@ -28,7 +31,14 @@ class VacanciesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        vacancies::create([
+            'role_id'=>request('role_id'),
+            'openings'=>request('openings'),
+            'deadline'=>request('deadline'),
+            'app_mode'=>request('app_mode'),
+            'status'=>'Open'
+        ]);
+        return back()->with('success','Job advert created successfully.');
     }
 
     /**
