@@ -9,7 +9,7 @@ class interview extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "appication_id",
+        "application_id",
         "date",
         "mode",
         'venue',
@@ -17,6 +17,6 @@ class interview extends Model
         'status'
     ];
     public function application(){
-        return $this->belongsTo(application::class,'appication_id','id');
+        return $this->belongsTo(application::class,'application_id','id');
     }
 }

@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('interviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('application_id');
             $table->string('date');
             $table->string('mode');
             $table->string('venue');
             $table->string('details');
             $table->string('status');
             $table->timestamps();
-            $table->foreign('appication_id')->references('id')->on('applications')->onDelete('cascade');
+            $table->foreign('application_id')->references('id')->on('applications')->onDelete('cascade');
         });
     }
 

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\application;
 use App\Models\interview;
+use App\Models\User;
 use App\Models\vacancies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class InterviewController extends Controller
@@ -33,7 +35,7 @@ class InterviewController extends Controller
     public function store(Request $request)
     {
         interview::create([
-            "appication_id"=>request('job_id'),
+            "application_id"=>request('job_id'),
             "date"=>request('date'),
             "mode"=>request('mode'),
             'venue'=>request('venue'),
@@ -43,14 +45,16 @@ class InterviewController extends Controller
         $application= application::findOrFail(request('job_id'));
         $application->status=request('Interview');
         $application->update();
-        $data = [
-            'header'=>'Interview Invitation',
-            'mess'=>'You have been invited for the interview on '.request('date').'. The '.request('mode').' venue will be '.request('venue').' Remember to '.request('details').' Thank you'
-        ];
+        
         $user = [
             'name' => $application->applicant_name,
             'email' => $application->applicant_email,
             'position'=>(vacancies::findOrFail($application->vacancy_id)->role->title)
+        ];
+        
+        $data = [
+            'header'=>'Interview Invitation',
+            'mess'=>'You have been invited for the interview on '.request('date').'. The '.request('mode').' venue will be '.request('venue').' Remember to '.request('details').' Thank you'
         ];
         Mail::send(
             'mail.message',
@@ -85,21 +89,35 @@ class InterviewController extends Controller
     {
         $int=interview::findOrFail($id);
         if(request('message')!=null){
-            application::where('id', $int->appication_id)->update([
+            application::where('id', $int->application_id)->update([
                 'message'=>request('message')
             ]);
         }
         if(request('status')!=null){
-            application::where('id', $int->appication_id)->update([
+            application::where('id', $int->application_id)->update([
                 'status'=>request('status')
             ]);
             $int->status=request('status');
         }
         if (request('status') != null && request('message') != null) {
-            $application=application::findOrFail($int->appication_id);
+            $application=application::findOrFail($int->application_id);
+            if(request('status')=='Hired'){
+                $name=explode(' ',$application->applicant_name);
+                User::create([
+                    'email'=> $application->applicant_email,
+                    'contact'=>$application->applicant_contact,
+                    'fname'=>$name[0],
+                    'sname'=>end($name),
+                    'password'=>Hash::make($application->applicant_contact),
+                ]);
+                $mess='Hello, <br> Your application was '.request('status').'. <br>'.request('message').'<br> Login to the system by clicking <a href="https://dev.sampesagroup.com/login">here</a> and reset your password using this email('.$application->applicant_email.'). Remember to update your bio-details under your profile. <br>Welcome to Sampesa Group';
+            }
+            else{
+                $mess = 'Hello, <br> Your application was ' . request('status') . '. <br>' . request('message') . '<br> Thank you.';
+            }
             $data = [
                 'header'=>'Interview Feedback',
-                'mess'=>'Hello, <br> Your application was '.request('status').'. <br>'.request('message').'<br> Thank you.'
+                'mess'=>$mess
             ];
             $user = [
                 'name' => $application->applicant_name,
@@ -114,6 +132,7 @@ class InterviewController extends Controller
                 }
             );
         }
+        
         return back()->with('success','Feedback recorded successfully.');
     }
 

@@ -66,6 +66,7 @@ class ApplicationController extends Controller
                 $message->to($user['email'], $user['name'])->subject(strtoupper($user['position'].' Job Application'));
             }
         );
+        
         return redirect('/career')->with('success', 'Your application has been submitted successfully.');
     }
 
