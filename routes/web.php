@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\DepMessageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\MessageController;
@@ -154,7 +156,9 @@ Route::get('/blog', function () {
 });
 Route::controller(HomeController::class)->group(function () {
     Route::get('/career', 'career');
+    Route::get('/application/{id}', 'apply');
 });
+Route::post('/apply', [ApplicationController::class,'store'])->name('');
 Route::get('/services/{service}', function ($service) {
     return view('front.services.'.$service);
 });
@@ -190,8 +194,8 @@ Route::middleware('auth')->group(function () {
         'department'=>DepartmentsController::class,
         'leave'=>LeaveController::class,
         'vacancy'=>VacanciesController::class,
-        'applications'=>VacanciesController::class,
-        'interviews'=>VacanciesController::class,
+        'applications'=>ApplicationController::class,
+        'interviews'=>InterviewController::class,
     ]);
     Route::middleware(AdminMiddleware::class)->group(function () {
         Route::resources([

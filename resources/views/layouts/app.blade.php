@@ -20,6 +20,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('storage/front/images/favicon/favicon.ico')}}">
     <link rel="icon" type="image/png" href="{{asset('storage/front/images/favicon/favicon.ico')}}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{asset('storage/front/images/favicon/favicon.ico')}}" sizes="16x16">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 </head>
 
@@ -109,6 +110,18 @@
         </header>
         <!--End Main Header-->
         <div class="container">
+            @if (Session::has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get('success') }}
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            @if (Session::has(key: 'error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ Session::get('error') }}
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             @yield('content')
         </div>
         <!--end-->

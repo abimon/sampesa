@@ -61,9 +61,20 @@ class LeaveController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Leave $leave)
+    public function update($id)
     {
-        //
+        $leave = Leave::findorFail($id);
+        if(request('l_date')!=null){
+            $leave->l_date=request('l_date');
+        }
+        if(request('r_date')!=null){
+            $leave->r_date=request('r_date');
+        }
+        if(request('status')!=null){
+            $leave->status=request('status');
+        }
+        $leave->update();
+        return back()->with('success','Leave updated.');
     }
 
     /**

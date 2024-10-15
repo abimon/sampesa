@@ -49,7 +49,7 @@
                     </div>
                     @if (($job->app_mode=="Online Form")||($job->app_mode=="Both Online and Physical"))
                     <div class="modal-footer">
-                        <a href=""><button class="btn btn-primary">Apply</button></a>
+                        <a href="/application/{{$job->id}}"><button class="btn btn-primary">Apply</button></a>
                     </div>
                     @endif
                 </div>

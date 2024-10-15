@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('applicant_name');
             $table->string('applicant_email');
             $table->string('applicant_contact');
+            $table->string('nationality');
+            $table->string('address');
+            $table->string('residence');
             $table->longText('cover_letter')->nullable();
             $table->string('cv')->nullable();
             $table->string('status')->nullable();

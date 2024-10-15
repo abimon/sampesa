@@ -14,6 +14,7 @@
     <title>SAMPESA GROUP - {{$title}}</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <link href="{{asset('storage/dash/css/sb-admin-2.min.css')}}" rel="stylesheet">
@@ -446,10 +447,23 @@
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
+
                 <div class="container-fluid">
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-grey-800 text-uppercase">{{$title}}</h1>
-                </div>
+                    @if (Session::has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ Session::get('success') }}
+                        <button type="button" class="fa fa-close" data-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+                    @if (Session::has(key: 'error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ Session::get('error') }}
+                        <button type="button" class="fa fa-close" data-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-grey-800 text-uppercase">{{$title}}</h1>
+                    </div>
                     @yield('dashboard')
                 </div>
                 <!-- /.container-fluid -->
