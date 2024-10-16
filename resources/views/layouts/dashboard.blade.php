@@ -34,12 +34,20 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <img src="{{asset('storage/front/images/favicon/favicon.ico')}}" alt="">
                 </div>
-                <div class="sidebar-brand-text mx-3">{{Auth()->user()->role}} PANEL</div>
             </a>
+            <div class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-text mx-3">{{Auth()->user()->role->department->title}} PANEL</div>
+            </div>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>User View</span>
+                </a>
+            </li>
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="/dashboard">
@@ -49,6 +57,7 @@
             </li>
             <hr class="sidebar-divider">
 
+            @if (Auth()->user()->role->title=='Admin')
             <!-- Engineers Heading -->
             <div class="sidebar-heading">
                 USER RECORDS
@@ -69,6 +78,7 @@
             </li>
             <hr class="sidebar-divider">
 
+            @endif
             <!-- Engineers Heading -->
             <div class="sidebar-heading">
                 My Department
@@ -101,7 +111,7 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
+            @if(Auth()->user()->role->department->title=='Human Resource'||Auth()->user()->role->department->title=='Administration')
             <!--HR Heading -->
             <div class="sidebar-heading">
                 Human Resource
@@ -138,6 +148,8 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!--Finance-->
+            @endif
+            @if(Auth()->user()->role->department->title=='Finance'||Auth()->user()->role->department->title=='Administration')
             <div class="sidebar-heading">
                 Finance
             </div>
@@ -149,7 +161,8 @@
                 </a>
                 <div id="income" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Rent Collections</a>
+                        <a class="collapse-item" href="{{route('income.index')}}">All Income</a>
+                        <!-- <a class="collapse-item" href="">Rent Collections</a> -->
                     </div>
                 </div>
             </li>
@@ -161,10 +174,10 @@
                 </a>
                 <div id="Expenses" class="collapse" aria-labelledby="headingMyLoans" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Payroll</a>
+                        <a class="collapse-item" href="{{route('salary.index')}}">Salaries</a>
+                        <a class="collapse-item" href="{{route('expense.show','Petty')}}">Petty Cash</a>
                         <a class="collapse-item" href="">Pay Change</a>
-                        <a class="collapse-item" href="">Petty Cash</a>
-                        <a class="collapse-item" href="">Other Expenses</a>
+                        <a class="collapse-item" href="{{route('expense.index')}}">All Expenses</a>
                     </div>
                 </div>
             </li>
@@ -176,13 +189,15 @@
                 </a>
                 <div id="loans" class="collapse" aria-labelledby="headingMyLoans" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Available Loans</a>
+                        <a class="collapse-item" href="{{route('loan.index')}}">Available Loans</a>
                         <a class="collapse-item" href="">Applications</a>
                     </div>
                 </div>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            @endif
+            @if(Auth()->user()->role->department->title=='Project Manager'||Auth()->user()->role->department->title=='Administration')
             <!--Project Manager Heading -->
             <div class="sidebar-heading">
                 Project Manager
@@ -231,6 +246,8 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            @endif
+            @if(Auth()->user()->role->department->title=='Technicians'||Auth()->user()->role->department->title=='Administration')
             <!--Loan HR Heading -->
             <div class="sidebar-heading">
                 Engineers, Architects & Technicians
@@ -281,6 +298,7 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            @endif
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -452,13 +470,13 @@
                     @if (Session::has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ Session::get('success') }}
-                        <button type="button" class="fa fa-close" data-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="alert" aria-label="Close"><i class="fa fa-close"></i></button>
                     </div>
                     @endif
                     @if (Session::has(key: 'error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ Session::get('error') }}
-                        <button type="button" class="fa fa-close" data-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="alert" aria-label="Close"><i class="fa fa-close"></i></button>
                     </div>
                     @endif
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">

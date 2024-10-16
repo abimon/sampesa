@@ -15,7 +15,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth()->user()->role=="Admin") {
+        if (Auth()->user()->role->department->title=='Administration') {
             return $next($request);
         }
         return back()->with("error","Only the admin is allowed");

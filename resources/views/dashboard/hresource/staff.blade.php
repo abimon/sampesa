@@ -46,8 +46,8 @@
                                             <select name="role" id="" class="form-select form-control">
                                                 <option value="Admin" {{($staff->role=='Admin')?'selected':''}}>Admin</option>
                                                 <option value="Director" {{($staff->role=='Director')?'selected':''}}>Director</option>
-                                                @foreach (App\Models\roles::select('title')->get() as $role)
-                                                <option value="{{$role->title}}" {{($staff->role==$role->title)?'selected':''}}>{{$role->title}}</option>
+                                                @foreach (App\Models\roles::where('dep_id','!=','1')->select('title','id')->get() as $role)
+                                                <option value="{{$role->id}}" {{($staff->role_id==$role->id)?'selected':''}}>{{$role->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

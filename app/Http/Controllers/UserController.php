@@ -109,8 +109,8 @@ class UserController extends Controller
         if (request()->nokrelationship != null) {
             $user->nokrelationship = request()->nokrelationship;
         }
-        if (request()->role != null) {
-            $user->role = request()->role;
+        if (request()->role_id != null) {
+            $user->role_id = request()->role_id;
         }
         if (request()->password != null) {
             $user->password = request()->password;

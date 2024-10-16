@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loans', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->longText('desc');
-            $table->double('interest');
-            $table->string('cover');
-            $table->timestamps();
-        });
         
+        Schema::create('loan_files', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('loan_id');
+            $table->string('file_path');
+            $table->timestamps();
+            $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');
+        });
     }
 
     /**
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('loans');
+        Schema::dropIfExists('loan_files');
     }
 };

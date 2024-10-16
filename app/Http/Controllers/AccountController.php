@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Staff;
-use App\Models\User;
+use App\Models\Account;
 use Illuminate\Http\Request;
 
-class StaffController extends Controller
+class AccountController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $staffs = User::where([['role_id','!=','1'],['role_id','!=','2'],['role_id','!=','3']])->get();
-        return view('dashboard.hresource.staff', compact('staffs'));
+        $accounts = Account::all();
+        return view("dashboard.finance.accounts", compact("accounts"));
     }
 
     /**
@@ -30,13 +29,17 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Account::create([
+            'name',
+            'created_by'
+        ]);
+        return back()->with('success','Account created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Staff $staff)
+    public function show(Account $account)
     {
         //
     }
@@ -44,7 +47,7 @@ class StaffController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Staff $staff)
+    public function edit(Account $account)
     {
         //
     }
@@ -52,7 +55,7 @@ class StaffController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Staff $staff)
+    public function update(Request $request, Account $account)
     {
         //
     }
@@ -60,7 +63,7 @@ class StaffController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Staff $staff)
+    public function destroy(Account $account)
     {
         //
     }

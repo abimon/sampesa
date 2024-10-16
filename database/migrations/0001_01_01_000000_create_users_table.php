@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('nok')->nullable();
             $table->string('nokcontact')->nullable();
             $table->string('nokrelationship')->nullable();
-            $table->string('role')->default('Client');
+            $table->string('role_id')->default('1');
             $table->string('password');
             $table->boolean('id_approved')->default(false);
             $table->boolean('kra_approved')->default(false);

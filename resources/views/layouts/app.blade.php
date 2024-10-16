@@ -99,7 +99,11 @@
                                 <li><a href="/contact">Contact</a></li>
                                 <li>
                                     <div class="button">
+                                        @auth
+                                        <a class="btn-one" href="/dashboard">Dashboard<span class="flaticon-next"></span></a>
+                                        @else
                                         <a class="btn-one" href="/login">Login<span class="flaticon-next"></span></a>
+                                        @endauth
                                     </div>
                                 </li>
                             </ul>

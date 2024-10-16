@@ -38,11 +38,15 @@ class User extends Authenticatable
         "nok",
         "nokcontact",
         "nokrelationship",
-        "role",
+        "role_id",
         "password",
         "id_approved",
         "kra_approved"
     ];
+
+    public function role(){
+       return $this->belongsTo(roles::class,"role_id","id");
+    }
 
     /**
      * The attributes that should be hidden for serialization.

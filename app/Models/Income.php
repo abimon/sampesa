@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Loan extends Model
+class Income extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
+        'source',
+        'amount',
+        'loggedBy',
         'desc',
-        'interest',
-        'cover'
     ];
-    public function photos(){
-        return $this->hasMany(LoanFile::class,'loan_id','id');
-    }
 }

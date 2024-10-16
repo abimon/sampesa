@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Staff;
-use App\Models\User;
+use App\Models\LoanApplication;
 use Illuminate\Http\Request;
 
-class StaffController extends Controller
+class LoanApplicationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $staffs = User::where([['role_id','!=','1'],['role_id','!=','2'],['role_id','!=','3']])->get();
-        return view('dashboard.hresource.staff', compact('staffs'));
+        //
     }
 
     /**
@@ -22,7 +20,8 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        // dd(request());
+        return request('loan');
     }
 
     /**
@@ -36,7 +35,7 @@ class StaffController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Staff $staff)
+    public function show(LoanApplication $loanApplication)
     {
         //
     }
@@ -44,7 +43,7 @@ class StaffController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Staff $staff)
+    public function edit(LoanApplication $loanApplication)
     {
         //
     }
@@ -52,7 +51,7 @@ class StaffController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Staff $staff)
+    public function update(Request $request, LoanApplication $loanApplication)
     {
         //
     }
@@ -60,7 +59,7 @@ class StaffController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Staff $staff)
+    public function destroy(LoanApplication $loanApplication)
     {
         //
     }
