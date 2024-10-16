@@ -12,8 +12,8 @@ class DepMessageController extends Controller
      */
     public function index()
     {
-        $messages =depMessage::where('department',Auth()->user()->role)->orderBy("created_at","desc")->get();
-        $department = Auth()->user()->role;
+        $messages =depMessage::where('department',Auth()->user()->role->department->title)->orderBy("created_at","desc")->get();
+        $department = Auth()->user()->role->department->title;
         return view("dashboard.department.messages", compact("messages","department"));
     }
 
