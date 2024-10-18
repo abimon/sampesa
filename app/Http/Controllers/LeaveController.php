@@ -13,7 +13,7 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        $users = User::where([['role', '!=', 'Admin'],['role', '!=', 'Client']])->get();
+        $users = User::where([['dep_id', '!=', '1'],['dep_id', '!=', '2']])->get();
         $leaves = Leave::all();
         $types = ['Maternity', 'Personal','Sick','Annual'];
         return view('dashboard.hresource.leave', compact('users','leaves','types'));
