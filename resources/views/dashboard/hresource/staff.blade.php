@@ -45,7 +45,7 @@
                                         <div class="form-floating">
                                             <select name="role_id" id="" class="form-select form-control">
                                                 @foreach (App\Models\roles::where('dep_id','!=','1')->select('title','id')->get() as $role)
-                                                <option value="{{$role->id}}" {{($staff->role_id==$role->id)?'selected':''}}>{{$role->title}}</option>
+                                                <option value="{{$role->id}}" class='text-uppercase' {{($staff->role_id==$role->id)?'selected':''}}>{{$role->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

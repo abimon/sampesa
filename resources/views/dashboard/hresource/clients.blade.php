@@ -43,7 +43,7 @@
                                         <div class="form-floating">
                                             <select name="role_id" id="" class="form-select form-control">
                                                 @foreach (App\Models\roles::select('title','id')->get() as $role)
-                                                <option value="{{$role->id}}">{{$role->title}}</option>
+                                                <option class='text-uppercase' value="{{$role->id}}">{{$role->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
