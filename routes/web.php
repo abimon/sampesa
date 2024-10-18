@@ -153,6 +153,7 @@ Route::get('/services', function () {
     ];
     return view('front.services',compact('services'));
 });
+
 Route::get('/about', function () {
     return view('front.about');
 });
@@ -162,8 +163,9 @@ Route::get('/blog', function () {
 Route::controller(HomeController::class)->group(function () {
     Route::get('/career', 'career');
     Route::get('/application/{id}', 'apply');
-    Route::get('/services/{service}','services');
+    Route::get('/credit_services/{service}','services');
     Route::get('/loans/{loan}','loan');
+    Route::get('/services/{service}','services');
 });
 Route::post('/apply', [ApplicationController::class,'store'])->name('');
 
@@ -175,7 +177,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
-        if (Auth()->user()->role->department->title!='Administration') {
+        if (!Auth()->user()->isAdmin) {
             if(Auth()->user()->fname == null){
                 return view('auth.step-two');
             }
@@ -219,7 +221,8 @@ Route::middleware('auth')->group(function () {
     Route::get('update_docs', function () {
         return view('auth.step-three');
     });
+    Route::get('/loans/apply/{loan}', [HomeController::class,'loan_application']);
 });
-Route::get('/log', function () {
-    return url()->previous();
-});
+
+Route::get('/loan/{loan}', [HomeController::class,'loan_details']);
+Route::get('/loan/apply/{loan}', [HomeController::class,'loan_application']);

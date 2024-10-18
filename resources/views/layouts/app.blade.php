@@ -49,7 +49,7 @@
         <header class="main-header header-style2 stricky">
             <div class="inner-container clearfix">
                 <div class="logo-box-style2 float-left">
-                    <a href="index.php" style="font-weight: 700; font-size: 15px;">
+                    <a href="/" style="font-weight: 700; font-size: 15px;">
                         <img src="{{asset('storage/front/images/resources/saml.png')}}" alt="Logo">
                         SAMPESA GROUP LTD
                     </a>

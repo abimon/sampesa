@@ -32,4 +32,11 @@ class HomeController extends Controller
         $loan = Loan::where('title',$title)->first();
         return view('front.services.loan',compact('loan'));
     }
+    public function loan_details($title)
+    {
+        return view('front.loans.'.$title);
+    }
+    public function loan_application($title){
+        return view('front.security.'.$title);
+    }
 }

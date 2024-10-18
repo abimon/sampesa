@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
         <!-- departments -->
-        @if(Auth()->user()->role=='Admin')
+        @if(Auth()->user()->role->title=='Admin')
         <div class="col-3 bg-light" id="">
             <div class="">
                 <!-- Search -->
@@ -12,7 +12,7 @@
                 </div> -->
                 <!-- List -->
                 <div class="scrollable">
-                    @foreach(App\Models\roles::select('title')->get() as $dep)
+                    @foreach(App\Models\departments::select('title')->get() as $dep)
                     <a href="{{route('message.show',$dep->title)}}" style="text-decoration:none; color:black;">
                         <div class="row m-2 d-flex justify-content-between">
                             <div class="col-5 mt-3">
@@ -94,6 +94,7 @@
                 <div class="layer w-100">
                     <form action="{{route('message.store')}}" method="post">
                         @csrf
+                        <input type="hidden" name="department" value="{{$department}}">
                         <div class="input-group mb-3">
                             <input type="text" name="message" class="form-control" placeholder="Say something ...">
                             <button class="input-group-text btn-info" type="submit"><i class="fa fa-paper-plane"></i></span>

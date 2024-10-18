@@ -23,7 +23,7 @@
                 <td>{{$staff->nationality}}</td>
                 <td>{{$staff->contact}}<br> <i>{{$staff->email}}</i></td>
                 <td>{{$staff->idNumber}}</td>
-                <td>{{$staff->role}}</td>
+                <td>{{$staff->role->title}}</td>
                 <td>{{$staff->residence}}</td>
                 <td>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#Staff{{$staff->id}}">
@@ -44,8 +44,6 @@
                                     <div class="modal-body">
                                         <div class="form-floating">
                                             <select name="role" id="" class="form-select form-control">
-                                                <option value="Admin" {{($staff->role=='Admin')?'selected':''}}>Admin</option>
-                                                <option value="Director" {{($staff->role=='Director')?'selected':''}}>Director</option>
                                                 @foreach (App\Models\roles::where('dep_id','!=','1')->select('title','id')->get() as $role)
                                                 <option value="{{$role->id}}" {{($staff->role_id==$role->id)?'selected':''}}>{{$role->title}}</option>
                                                 @endforeach

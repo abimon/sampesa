@@ -29,6 +29,10 @@ class DatabaseSeeder extends Seeder
             'title'=>'Administration',
             'type'=>'Administrative',
         ]);
+        departments::create([
+            'title'=>'Customer Service',
+            'type'=>'Customer Service',
+        ]);
         roles::create([
             'dep_id'=>1,
             'title'=>'Admin',
@@ -41,13 +45,27 @@ class DatabaseSeeder extends Seeder
             'job_description'=>'Oversees all office operations',
             'job_requirements'=>"Own the organization",
         ]);
+        roles::create([
+            'dep_id'=>2,
+            'title'=>'Customer',
+            'job_description'=>'Random Inquiry',
+            'job_requirements'=>"",
+        ]);
+        roles::create([
+            'dep_id'=>2,
+            'title'=>'Client',
+            'job_description'=>'Undergoing Project',
+            'job_requirements'=>"Must pay for service",
+        ]);
         User::create([
             'fname'=>'Edimon',
             'sname'=>'Abimon',
             'email'=>'eabimon@gmail.com',
             'password'=>Hash::make('qazaqaza'),
             'contact'=>'0701583807',
-            'role_id'=>'1'
+            'role_id'=>'1',
+             'isAdmin'=>true
         ]);
+        User::factory(10)->create();
     }
 }

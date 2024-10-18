@@ -13,7 +13,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = User::where('role_id','3')->get();
+        $clients = User::where('isAdmin',false)->get();
         return view('dashboard.hresource.clients', compact('clients'));
     }
 

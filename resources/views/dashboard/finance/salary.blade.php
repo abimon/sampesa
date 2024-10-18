@@ -19,7 +19,7 @@
                                 <label for="" class="col-md-4">Staff*</label>
                                 <select name="user_id" id="" class="col-md-8 form-control" required>
                                     <option value="" selected disabled>----Select Staff----</option>
-                                    @foreach (App\Models\User::where('role','!=','Client')->select('fname','sname','id')->orderBy('fname','asc')->get() as $user)
+                                    @foreach (App\Models\User::where('role_id','!=','3')->select('fname','sname','id')->orderBy('fname','asc')->get() as $user)
                                     <option value="{{$user->id}}">{{$user->fname}} {{$user->sname}}</option>
                                     @endforeach
                                 </select>

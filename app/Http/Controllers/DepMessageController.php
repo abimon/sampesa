@@ -31,8 +31,8 @@ class DepMessageController extends Controller
     public function store(Request $request)
     {
         depMessage::create([
-            'department'=>Auth()->user()->role,
-            'subject'=>(Auth()->user()->role).' department messages',
+            'department'=>request()->department,
+            'subject'=>(Auth()->user()->role->department->title).' department messages',
             'message'=>request('message'),
             'sender_id'=>Auth()->user()->id,
         ]);
