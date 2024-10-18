@@ -66,6 +66,6 @@ class DatabaseSeeder extends Seeder
             'role_id'=>'1',
              'isAdmin'=>true
         ]);
-        User::factory(10)->create();
+        // User::factory(10)->create();
     }
 }
