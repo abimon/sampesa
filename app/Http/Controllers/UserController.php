@@ -111,6 +111,12 @@ class UserController extends Controller
         }
         if (request()->role_id != null) {
             $user->role_id = request()->role_id;
+            if((request('role_id')!=3)||(request('role_id')!=4)){
+                $user->isAdmin = true;
+            }
+            else{
+                $user->isAdmin = false;
+            }
         }
         if (request()->password != null) {
             $user->password = request()->password;

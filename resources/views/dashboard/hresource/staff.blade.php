@@ -43,7 +43,7 @@
                                 @method('PUT')
                                     <div class="modal-body">
                                         <div class="form-floating">
-                                            <select name="role" id="" class="form-select form-control">
+                                            <select name="role_id" id="" class="form-select form-control">
                                                 @foreach (App\Models\roles::where('dep_id','!=','1')->select('title','id')->get() as $role)
                                                 <option value="{{$role->id}}" {{($staff->role_id==$role->id)?'selected':''}}>{{$role->title}}</option>
                                                 @endforeach

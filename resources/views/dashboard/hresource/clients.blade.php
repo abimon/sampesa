@@ -41,9 +41,9 @@
                                 @method('PUT')
                                     <div class="modal-body">
                                         <div class="form-floating">
-                                            <select name="role" id="" class="form-select form-control">
-                                                @foreach (App\Models\roles::select('title')->get() as $role)
-                                                <option value="{{$role->title}}">{{$role->title}}</option>
+                                            <select name="role_id" id="" class="form-select form-control">
+                                                @foreach (App\Models\roles::select('title','id')->get() as $role)
+                                                <option value="{{$role->id}}">{{$role->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
