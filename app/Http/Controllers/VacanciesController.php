@@ -14,7 +14,7 @@ class VacanciesController extends Controller
     public function index()
     {
         $vacancies = vacancies::all();
-        $roles = roles::all();
+        $roles = roles::where('id','>',4)->get();
         return view("dashboard.hresource.jobs", compact("vacancies","roles"));
     }
 
