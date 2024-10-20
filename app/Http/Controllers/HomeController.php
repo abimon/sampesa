@@ -23,17 +23,11 @@ class HomeController extends Controller
     }
     public function services($service){
         if($service=='credit'){
-            $loans = Loan::all();
-            return view('front.services.credit',compact('loans'));
+            return view('front.services.credit');
         }
         return view('front.services.'.$service);
     }
-    public function loan($title){
-        $loan = Loan::where('title',$title)->first();
-        return view('front.services.loan',compact('loan'));
-    }
-    public function loan_details($title)
-    {
+    public function loan_details($title){
         return view('front.loans.'.$title);
     }
     public function loan_application($title){

@@ -1,7 +1,9 @@
 @extends('layouts.app',['title'=>'Value Addition'])
 @section('content')
+
+<?php $img =asset("storage/front/images/resources/breadcrumb-bg-2.jpg");?>
 <!--Start breadcrumb area-->
-<section class="breadcrumb-area style2" style="background-image: url(images/resources/breadcrumb-bg-2.jpg);">
+<section class="breadcrumb-area style2" style="background-image: url({{$img}});">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">

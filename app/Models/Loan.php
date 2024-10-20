@@ -9,12 +9,11 @@ class Loan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
-        'desc',
-        'interest',
-        'cover'
+        'user_id',
+        'loan',
+        'status',
     ];
-    public function photos(){
-        return $this->hasMany(LoanFile::class,'loan_id','id');
+    public function user(){
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

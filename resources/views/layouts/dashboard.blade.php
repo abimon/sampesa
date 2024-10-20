@@ -27,8 +27,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar" style="max-height:100vh; overflow:scroll">
-
+        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar" >
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -38,7 +37,7 @@
             <div class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-text mx-3">{{Auth()->user()->role->department->title}} PANEL</div>
             </div>
-
+            @if (Auth()->user()->isAdmin)
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -65,17 +64,18 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="{{route('clients.index')}}">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Clients Records</span>
+                <a class="nav-link" href="{{route('staff.index')}}">
+                    <i class="fas fa-fw fa-id-card"></i>
+                    <span>Staff</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('staff.index')}}">
-                    <i class="fas fa-fw fa-id-card"></i>
-                    <span>Staff Records</span>
+                <a class="nav-link" href="{{route('clients.index')}}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Non-Staff</span>
                 </a>
             </li>
+
             <hr class="sidebar-divider">
 
             @endif
@@ -298,6 +298,39 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            @endif
+            @else
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <i class="fa-solid fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link">
+                    <i class="fa-solid fa-gauge"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('project.index')}}" class="nav-link">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('loan.index')}}">
+                    <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                    <span>Loans</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <span>Payments</span>
+                </a>
+            </li>
             @endif
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

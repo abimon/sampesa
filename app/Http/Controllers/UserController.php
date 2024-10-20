@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -23,7 +24,21 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $user=User::where('email',request('email'))->orWhere('contact',request('contact'))->first();
+        if (!$user) {
+            $user = User::create([
+                "fname" => request('fname'),
+                "lname" => request('lname'),
+                "contact" => request('contact'),
+                "email" => request('email'),
+                "idNumber" => request('idNumber'),
+                "nationality" => request('nationality'),
+                "address" => request('address'),
+                "role_id" => request('role_id'),
+                "isAdmin" => false,
+                "pasword" => Hash::make("Password!#@" . date('Y')),
+            ]);
+        }
     }
 
     public function show($id)
@@ -65,13 +80,13 @@ class UserController extends Controller
             $user->idNumber = request()->idNumber;
         }
         if (request()->town != null) {
-            $user->residence = (request()->town).', '.(request()->county);
+            $user->residence = (request()->town) . ', ' . (request()->county);
         }
         if (request()->krapin != null) {
             $user->krapin = request()->krapin;
         }
         if (request()->p_address != null) {
-            $user->address = (request()->p_address).' '.(request()->p_code).' '.(request()->p_town);
+            $user->address = (request()->p_address) . ' ' . (request()->p_code) . ' ' . (request()->p_town);
         }
         if (request()->dob != null) {
             $user->dob = request()->dob;
@@ -84,19 +99,19 @@ class UserController extends Controller
         }
         if (request()->hasFile('idCard')) {
             $extension = request()->file('idCard')->getClientOriginalExtension();
-            $id_path = ($user->fname).uniqid().time(). '.' . $extension;
+            $id_path = ($user->fname) . uniqid() . time() . '.' . $extension;
             request()->file('idCard')->storeAs('public/users/idCards', $id_path);
             $user->id_path = $id_path;
         }
         if (request()->hasFile('kraCert')) {
             $extension = request()->file('kraCert')->getClientOriginalExtension();
-            $kra_path = ($user->fname).uniqid().time(). '.' . $extension;
+            $kra_path = ($user->fname) . uniqid() . time() . '.' . $extension;
             request()->file('kraCert')->storeAs('public/users/kraCerts', $kra_path);
             $user->kra_path = $kra_path;
         }
         if (request()->hasFile('passport')) {
             $extension = request()->file('passport')->getClientOriginalExtension();
-            $pp_path = ($user->fname).uniqid().time(). '.' . $extension;
+            $pp_path = ($user->fname) . uniqid() . time() . '.' . $extension;
             request()->file('passport')->storeAs('public/users/passports', $pp_path);
             $user->pp_path = $pp_path;
         }
@@ -111,10 +126,9 @@ class UserController extends Controller
         }
         if (request()->role_id != null) {
             $user->role_id = request()->role_id;
-            if((request('role_id')!=3)||(request('role_id')!=4)){
+            if ((request('role_id') != 3) || (request('role_id') != 4)) {
                 $user->isAdmin = true;
-            }
-            else{
+            } else {
                 $user->isAdmin = false;
             }
         }

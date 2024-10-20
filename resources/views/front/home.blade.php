@@ -317,6 +317,99 @@
         </div>
     </section>
     <!--End Why choose Area-->
+    <div class="container">
+        <div class="concept-design-pricing-box">
+            <div class="title">
+                <h2 class="text-center">Core Values</h2>
+            </div>
+            <div class="inner-content">
+                <div class="row">
+                    <!--Start Single Flexible box-->
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="single-pricing-box wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
+                            <div class="inner">
+                                <div class="img-box">
+                                    <img src="{{asset('storage/front/images/services/service-single/pricing-1.jpg')}}" alt="Awesome Image">
+                                </div>
+                                <div class="static-content text-center">
+                                    <div class="table-header">
+                                        <div class="package">
+                                            <h1 style="font-size:40px;">Transparency</h1>
+                                        </div>
+                                        <div class="package" style="padding:20px;">
+                                            <p>Throughout the joint venture process, we maintain transparent communication and provide regular updates, ensuring that you're involved in key decisions and have a clear understanding of the project's progress. We also handle the legal, financial, and operational aspects, ensuring compliance with regulatory requirements and maximizing efficiency.</p>
+                                            <div class="button"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="overlay-content">
+                                    <h1 style="color:#428af5;">Transparency</h1>
+                                    <p style="color:white;" class="package">Throughout the joint venture process, we maintain transparent communication and provide regular updates, ensuring that you're involved in key decisions and have a clear understanding of the project's progress. We also handle the legal, financial, and operational aspects, ensuring compliance with regulatory requirements and maximizing efficiency.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Single Flexible box-->
+                    <!--Start Single Flexible box-->
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="single-pricing-box wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
+                            <div class="inner">
+                                <div class="img-box">
+                                    <img src="{{asset('storage/front/images/services/service-single/pricing-1.jpg')}}" alt="Awesome Image">
+                                </div>
+                                <div class="static-content text-center">
+                                    <div class="table-header">
+                                        <div class="package">
+                                            <h1 style="font-size:40px;">Partnership</h1>
+
+                                        </div>
+                                        <div class="package" style="padding:20px;">
+
+                                            <p>By partnering with Sampesa Group Limited in a property development joint venture, you can benefit from our extensive industry network, access to financing options, and proven track record in successful developments. We aim to create value and deliver profitable outcomes for all parties involved. Embarking on a property development joint venture with Sampesa Group Limited opens doors to exciting opportunities, accelerated growth, and shared success.</p>
+                                            <div class="button"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="overlay-content">
+                                    <h1 style="color:#428af5;">Partnership</h1>
+                                    <p style="color:white;">By partnering with Sampesa Group Limited in a property development joint venture, you can benefit from our extensive industry network, access to financing options, and proven track record in successful developments. We aim to create value and deliver profitable outcomes for all parties involved. Embarking on a property development joint venture with Sampesa Group Limited opens doors to exciting opportunities, accelerated growth, and shared success.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Single Flexible box-->
+                    <!--Start Single Flexible box-->
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="single-pricing-box wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
+                            <div class="inner">
+                                <div class="img-box">
+                                    <img src="{{asset('storage/front/images/services/service-single/pricing-1.jpg')}}" alt="Awesome Image">
+                                </div>
+                                <div class="static-content text-center">
+                                    <div class="table-header">
+                                        <div class="package">
+                                            <h1 style="font-size:40px;">Returns and Ownership</h1>
+                                        </div>
+                                        <div class="package" style="padding:20px;">
+                                            <p>We will ensure that our client is able to get 20-30% of the total revenue collected per month. whereas the company keeps the remaining for the period of months agreed in the joint venture agreement. The client has the obligation to advise whoever is managing the property. The property owner remains the registered owner of the Title Deed.</p>
+                                        </div>
+                                    </div>
+                                    <div class="button"></div>
+                                </div>
+                                <div class="overlay-content">
+                                    <h1 style="color:#428af5;">Returns and Ownership</h1>
+                                    <p style="color:white;">We will ensure that our client is able to get 20-30% of the total revenue collected per month. whereas the company keeps the remaining for the period of months agreed in the joint venture agreement. The client has the obligation to advise whoever is managing the property. The property owner remains the registered owner of the Title Deed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Single Flexible box-->
+
+                </div>
+            </div>
+        </div>
+    </div>
     <!--Start Working Area-->
     <section class="working-area" style="background-image:url(/storage/front/images/parallax-background/working-bg.jpg);">
         <div class="container">

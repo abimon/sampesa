@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LoanFile extends Model
+class Investor extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'loan_id',
-        'file_path'
+        "user_id",
+        "occupation",
+        "nKin",
+        "nKin_rel",
+        "nKin_contact",
     ];
 }

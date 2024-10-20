@@ -1,7 +1,9 @@
 @extends('layouts.app',['title'=>'Property Development'])
 @section('content')
+
+<?php $img = asset("storage/front/images/resources/breadcrumb-bg-2.jpg"); ?>
 <!--Start breadcrumb area-->
-<section class="breadcrumb-area style2" style="background-image: url(images/resources/breadcrumb-bg-2.jpg);">
+<section class="breadcrumb-area style2" style="background-image: url({{$img}});">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -107,11 +109,6 @@
                                 <h2>0724062218 <br> 0726717120</h2>
                                 <span>info@sampesagroup.com</span>
                             </div>
-                            <div class="button">
-                                <a class="btn-one wow slideInUp" data-wow-delay="0ms" data-wow-duration="1500ms" href="appointment.php">Book Appointment
-                                    <span class="flaticon-next"></span>
-                                </a>
-                            </div>
                         </div>
                     </div>
 
@@ -120,7 +117,7 @@
             <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12">
                 <div class="single-service-top">
                     <div class="single-service-image-box">
-                        <img src="images/services/propde.jpg" alt="Awesome Image">
+                        <img src="{{asset('storage/front/images/services/propde.jpg')}}" alt="Awesome Image">
                     </div>
                     <div class="text">
                         <h2>Joint Venture / Property Development</h2>
@@ -147,15 +144,7 @@
                         </p>
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
-
-
             <div class="col-xl-12 col-lg-7 col-md-12 col-sm-12">
 
                 <div class="how-work-box">
@@ -193,8 +182,7 @@
                                         <div class="text">
                                             <span>Step 3</span>
                                             <h3>Investment Options</h3>
-                                            <p>Our joint ventures typically rely on prime land owned by our partners. We invest in income-generating projects such as rentals, hotels, hostels,
-                                                and commercial properties. We offer full financing for the project, including consultancy fees, which are often 10% of the total project val</p>
+                                            <p>Our joint ventures typically rely on prime land owned by our partners. We invest in income-generating projects such as rentals, hotels, hostels, and commercial properties. We offer full financing for the project, including consultancy fees, which are often 10% of the total project val</p>
                                         </div>
                                     </li>
                                     <li>
@@ -204,8 +192,7 @@
                                         <div class="text">
                                             <span>Step 4</span>
                                             <h3>Consultancy Fees</h3>
-                                            <p>In cases where the client is unable to cover the consultancy fees upfront, we share the cost, with the client responsible for 30% and SAMPESA GROUP LIMITED
-                                                covering the remaining 70%.</p>
+                                            <p>In cases where the client is unable to cover the consultancy fees upfront, we share the cost, with the client responsible for 30% and SAMPESA GROUP LIMITED covering the remaining 70%.</p>
                                         </div>
                                     </li>
                                     <li>
@@ -215,8 +202,7 @@
                                         <div class="text">
                                             <span>Step 5</span>
                                             <h3>Facilitating Approvals</h3>
-                                            <p>We assist our clients in obtaining necessary government approvals, including architectural, structural, mechanical, electrical, and quantity
-                                                surveying drawings. Our team of professionals ensures compliance with all regulatory requirements.</p>
+                                            <p>We assist our clients in obtaining necessary government approvals, including architectural, structural, mechanical, electrical, and quantity surveying drawings. Our team of professionals ensures compliance with all regulatory requirements.</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -284,131 +270,12 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>
 </section>
 <!--End Single Service Area-->
-<div class="container">
-    <div class="concept-design-pricing-box">
-        <div class="title">
-            <h2>Core Values</h2>
-        </div>
-        <div class="inner-content">
-            <div class="row">
-                <!--Start Single Flexible box-->
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="single-pricing-box wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
-                        <div class="inner">
-                            <div class="img-box">
-                                <img src="images/services/service-single/pricing-1.jpg" alt="Awesome Image">
-                            </div>
-                            <div class="static-content text-center">
-                                <div class="table-header">
-                                    <div class="package">
-                                        <h1 style="font-size:40px;">Transparency</h1>
 
-                                    </div>
-                                    <div class="package">
-
-                                        <p>Throughout the joint venture process, we maintain transparent communication and provide regular updates, ensuring that you're involved in key decisions
-                                            and have a clear understanding of the project's progress. We also handle the legal, financial, and operational aspects, ensuring compliance with regulatory
-                                            requirements and maximizing efficiency.</p>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Request Service<span class="flaticon-next"></span></a>
-                                </div>
-                            </div>
-                            <div class="overlay-content">
-                                <h1 style="color:#428af5;">Transparency</h1>
-                                <p style="color:white;">Throughout the joint venture process, we maintain transparent communication and provide regular updates, ensuring that you're involved in key decisions
-                                    and have a clear understanding of the project's progress. We also handle the legal, financial, and operational aspects, ensuring compliance with regulatory
-                                    requirements and maximizing efficiency.</p>
-                                <a class="btn-one" href="#">Request Service<span class="flaticon-next"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Single Flexible box-->
-                <!--Start Single Flexible box-->
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="single-pricing-box wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
-                        <div class="inner">
-                            <div class="img-box">
-                                <img src="images/services/service-single/pricing-1.jpg" alt="Awesome Image">
-                            </div>
-                            <div class="static-content text-center">
-                                <div class="table-header">
-                                    <div class="package">
-                                        <h1 style="font-size:40px;">Partnership</h1>
-
-                                    </div>
-                                    <div class="package">
-
-                                        <p>By partnering with Sampesa Group Limited in a property development joint venture, you can benefit from our extensive industry network, access to financing options,
-                                            and proven track record in successful developments. We aim to create value and deliver profitable outcomes for all parties involved. Embarking on a property development
-                                            joint venture with Sampesa Group Limited opens doors to exciting opportunities, accelerated growth, and shared success.</p>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Request Service<span class="flaticon-next"></span></a>
-                                </div>
-                            </div>
-                            <div class="overlay-content">
-                                <h1 style="color:#428af5;">Partnership</h1>
-                                <p style="color:white;">By partnering with Sampesa Group Limited in a property development joint venture, you can benefit from our extensive industry network, access to financing options,
-                                    and proven track record in successful developments. We aim to create value and deliver profitable outcomes for all parties involved. Embarking on a property development
-                                    joint venture with Sampesa Group Limited opens doors to exciting opportunities, accelerated growth, and shared success.</p>
-                                <a class="btn-one" href="#">Request Service<span class="flaticon-next"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Single Flexible box-->
-                <!--Start Single Flexible box-->
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="single-pricing-box wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
-                        <div class="inner">
-                            <div class="img-box">
-                                <img src="images/services/service-single/pricing-1.jpg" alt="Awesome Image">
-                            </div>
-                            <div class="static-content text-center">
-                                <div class="table-header">
-                                    <div class="package">
-                                        <h1 style="font-size:40px;">Returns and Ownership</h1>
-
-                                    </div>
-                                    <div class="package">
-
-                                        <p>We will ensure that our client is able to get 20-30% of the total revenue collected per month. whereas the company keeps the remaining for the period
-                                            of months agreed in the joint venture agreement. The client has the obligation to advise whoever is managing the property. The property owner remains the
-                                            registered owner of the Title Deed.</p>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Request Service<span class="flaticon-next"></span></a>
-                                </div>
-                            </div>
-                            <div class="overlay-content">
-                                <h1 style="color:#428af5;">Returns and Ownership</h1>
-                                <p style="color:white;">We will ensure that our client is able to get 20-30% of the total revenue collected per month. whereas the company keeps the remaining for the period
-                                    of months agreed in the joint venture agreement. The client has the obligation to advise whoever is managing the property. The property owner remains the
-                                    registered owner of the Title Deed</p>
-                                <a class="btn-one" href="#">Request Service<span class="flaticon-next"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Single Flexible box-->
-
-            </div>
-        </div>
-    </div>
-</div>
 <!--start investor-->
 <div class="container">
 
@@ -506,7 +373,6 @@
 <div class="container">
 
     <div class="row ">
-
         <div class="col-xl-6">
             <div class="how-works-content p-2">
 
@@ -526,7 +392,7 @@
                     </li>
 
                 </ul>
-                <a class="btn-one" href="../projects/new-investor.php">Become An Investor<span class="flaticon-next"></span></a>
+                <a class="btn-one" href="/investor/">Become An Investor<span class="flaticon-next"></span></a>
             </div>
         </div>
         <div class="col-xl-6">
@@ -558,6 +424,7 @@
                 </ul>
             </div>
         </div>
+        
     </div>
 </div>
 <!--end investor-->

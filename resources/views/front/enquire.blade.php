@@ -12,7 +12,7 @@
                             </div>
                             <div class="breadcrumb-menu float-left">
                                 <ul class="clearfix">
-                                    <li><a href="index-2.html">Home</a></li>
+                                    <li><a href="/">Home</a></li>
                                     <li class="active">Enquiry</li>
                                 </ul>
                             </div>

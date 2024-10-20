@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loans', function (Blueprint $table) {
+        Schema::create('memberships', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('desc');
-            $table->double('interest');
-            $table->string('cover');
+            $table->unsignedBigInteger('user_id');
+            $table->integer('amount');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('loans');
+        Schema::dropIfExists('memberships');
     }
 };

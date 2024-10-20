@@ -1,7 +1,9 @@
 @extends('layouts.app',['title'=>'Archtectural Services'])
 @section('content')
+
+<?php $img =asset("storage/front/images/resources/breadcrumb-bg-2.jpg");?>
 <!--Start breadcrumb area-->
-<section class="breadcrumb-area style2" style="background-image: url(storage/front/images/resources/breadcrumb-bg-2.jpg);">
+<section class="breadcrumb-area style2" style="background-image: url({{$img}});">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -58,9 +60,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="button" style="align-items:center;">
-        <a class="btn-one" href="/request/drawing">Request Service<span class="flaticon-next"></span></a>
     </div>
 </section>
 <!--End Project Description area-->
@@ -189,7 +188,7 @@
             </div>
             <!--End Single Similar Project-->
             <div class="button" style="align-items:center;">
-                <a class="btn-one" href="/request/drawing">Request Service<span class="flaticon-next"></span></a>
+                <a href="/contact" class="btn-one">Contact us to request this service<span class="flaticon-next"></span></a>
             </div>
         </div>
     </div>

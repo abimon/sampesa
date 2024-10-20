@@ -57,6 +57,12 @@ class DatabaseSeeder extends Seeder
             'job_description'=>'Undergoing Project',
             'job_requirements'=>"Must pay for service",
         ]);
+        roles::create([
+            'dep_id'=>2,
+            'title'=>'Investor',
+            'job_description'=>'Joint up on project',
+            'job_requirements'=>"Readiness to invest",
+        ]);
         User::create([
             'fname'=>'Edimon',
             'sname'=>'Abimon',
@@ -66,6 +72,6 @@ class DatabaseSeeder extends Seeder
             'role_id'=>'1',
              'isAdmin'=>true
         ]);
-        // User::factory(10)->create();
+        User::factory(10)->create();
     }
 }

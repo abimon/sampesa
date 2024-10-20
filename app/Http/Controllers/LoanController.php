@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Loan;
-use App\Models\LoanFile;
 use Illuminate\Http\Request;
 
 class LoanController extends Controller
@@ -13,7 +12,12 @@ class LoanController extends Controller
      */
     public function index()
     {
-        $loans = Loan::all();
+        if(Auth()->user()->isAdmin){
+            $loans = Loan::all();
+        }
+        else{
+            $loans = Loan::where('user_id',Auth()->user()->id)->get();
+        }
         return view("dashboard.credit.loans", compact("loans"));
     }
 
@@ -28,20 +32,9 @@ class LoanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function store(Request $request)
     {
-        if (request()->hasFile("cover")) {
-            $extension = request()->file('cover')->getClientOriginalExtension();
-            $cover = uniqid() . time() . '.' . $extension;
-            request()->file('cover')->storeAs('public/loan/covers', $cover);
-        }
-        Loan::create([
-            'title' => request('title'),
-            'cover' => $cover,
-            'desc' => request('desc'),
-            'interest' => request('interest')
-        ]);
-        return back()->with('success', 'Loan instance created successfully.');
+        //
     }
 
     /**
@@ -63,46 +56,16 @@ class LoanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($id)
+    public function update(Request $request, Loan $loan)
     {
-        // dd(request());
-        $loan = Loan::findOrFail($id);
-        // if (request()->hasFile("cover")) {
-        //     $extension = request()->file('cover')->getClientOriginalExtension();
-        //     $cover = uniqid() . time() . '.' . $extension;
-        //     request()->file('cover')->storeAs('public/loan/covers', $cover);
-        //     $loan->cover = $cover;
-        // }
-        if (request('title') != null) {
-            $loan->title = request('title');
-        }
-        if (request('desc') != null) {
-            $loan->desc = request('desc');
-        }
-        if (request(key: 'interest') != null) {
-            $loan->interest = request('interest');
-        }
-        $loan->update();
-        if (request()->hasFile('photos')) {
-            foreach (request()->file('photos') as $file) {
-                $extension = $file->getClientOriginalExtension();
-                $cover = uniqid() . time() . '.' . $extension;
-                $file->storeAs('public/loan/photos', $cover);
-                LoanFile::create([
-                    'loan_id'=>$id,
-                    'file_path'=>$cover
-                ]);
-            }
-        }
-        return back()->with('success', 'Loan instance updated successfully');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Loan $loan)
     {
-        Loan::destroy($id);
-        return back()->with('success', 'Loan instance deleted successfully');
+        //
     }
 }

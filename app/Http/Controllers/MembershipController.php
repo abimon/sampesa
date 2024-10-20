@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LoanFile;
+use App\Models\Membership;
 use Illuminate\Http\Request;
 
-class LoanFileController extends Controller
+class MembershipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class LoanFileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(LoanFile $loanFile)
+    public function show(Membership $membership)
     {
         //
     }
@@ -42,7 +42,7 @@ class LoanFileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LoanFile $loanFile)
+    public function edit(Membership $membership)
     {
         //
     }
@@ -50,7 +50,7 @@ class LoanFileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, LoanFile $loanFile)
+    public function update(Request $request, Membership $membership)
     {
         //
     }
@@ -58,7 +58,7 @@ class LoanFileController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LoanFile $loanFile)
+    public function destroy(Membership $membership)
     {
         //
     }

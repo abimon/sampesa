@@ -11,8 +11,6 @@ class Project extends Model
     protected $fillable = [
         'title',
         'category',
-        'client_name',
-        'client_contact',
         'client_id',
         'county',
         'town',
@@ -21,4 +19,7 @@ class Project extends Model
         'start_date',
         'cover'
     ];
+    public function client(){
+        return $this->belongsTo(User::class,'client_id','id');
+    }
 }

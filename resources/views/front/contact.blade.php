@@ -2,7 +2,7 @@
 @section('content')
   <!--end-->
         <!--Start breadcrumb area-->
-        <section class="breadcrumb-area style2" style="background-image: url(images/resources/breadcrumb-bg-2.jpg);">
+        <section class="breadcrumb-area style2" style="background-image: url(storage/front/images/resources/breadcrumb-bg-2.jpg);">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -13,8 +13,7 @@
                             </div>
                             <div class="breadcrumb-menu float-left">
                                 <ul class="clearfix">
-                                    <li><a href="index.php">Home</a></li>
-                                   
+                                    <li><a href="/">Home</a></li>
                                     <li class="active">Contact Us</li>
                                 </ul>
                             </div>

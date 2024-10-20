@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\CapitalController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\DepMessageController;
@@ -8,16 +9,19 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\InterviewController;
+use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LoanApplicationController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PayslipController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacanciesController;
@@ -160,12 +164,20 @@ Route::get('/about', function () {
 Route::get('/blog', function () {
     return view('front.blog');
 });
+Route::get('/terms-and-conditions', function () {
+    return view('front.loans.terms-and-conditions');
+});
 Route::controller(HomeController::class)->group(function () {
     Route::get('/career', 'career');
     Route::get('/application/{id}', 'apply');
     Route::get('/credit_services/{service}','services');
     Route::get('/loans/{loan}','loan');
     Route::get('/services/{service}','services');
+});
+
+Route::controller(InvestorController::class)->prefix('/investor')->group(function () {
+    Route::get('/','create');
+    Route::post('/store', 'store');
 });
 Route::post('/apply', [ApplicationController::class,'store'])->name('');
 
@@ -176,6 +188,7 @@ Route::get('/logout', function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+    Route::get('/loan/apply/{loan}', [HomeController::class, 'loan_application']);
     Route::get('/dashboard', function () {
         if (!Auth()->user()->isAdmin) {
             if(Auth()->user()->fname == null){
@@ -206,8 +219,10 @@ Route::middleware('auth')->group(function () {
         'salary'=>SalaryController::class,
         'income'=>IncomeController::class,
         'expense'=>ExpenseController::class,
+        'payslip'=>PayslipController::class,
+        'capital'=>CapitalController::class,
+        'stock'=>StockController::class,
         'loan'=>LoanController::class,
-        'loan_application'=>LoanApplicationController::class,
     ]);
     Route::middleware(AdminMiddleware::class)->group(function () {
         Route::resources([
@@ -225,4 +240,4 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/loan/{loan}', [HomeController::class,'loan_details']);
-Route::get('/loan/apply/{loan}', [HomeController::class,'loan_application']);
+
