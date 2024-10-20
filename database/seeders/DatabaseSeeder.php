@@ -25,44 +25,44 @@ class DatabaseSeeder extends Seeder
         //     'email' => fake()->email(),
         //     'password'=>Hash::make('password')
         // ]);
-        departments::create([
-            'title'=>'Administration',
-            'type'=>'Administrative',
-        ]);
-        departments::create([
-            'title'=>'Customer Service',
-            'type'=>'Customer Service',
-        ]);
-        roles::create([
-            'dep_id'=>1,
-            'title'=>'Admin',
-            'job_description'=>'Manages all departments and rights',
-            'job_requirements'=>"Understands the system and its functioning. In addition ability in debugging Laravel programs will be an added advantage",
-        ]);
-        roles::create([
-            'dep_id'=>1,
-            'title'=>'Director',
-            'job_description'=>'Oversees all office operations',
-            'job_requirements'=>"Own the organization",
-        ]);
-        roles::create([
-            'dep_id'=>2,
-            'title'=>'Customer',
-            'job_description'=>'Random Inquiry',
-            'job_requirements'=>"",
-        ]);
-        roles::create([
-            'dep_id'=>2,
-            'title'=>'Client',
-            'job_description'=>'Undergoing Project',
-            'job_requirements'=>"Must pay for service",
-        ]);
-        roles::create([
-            'dep_id'=>2,
-            'title'=>'Investor',
-            'job_description'=>'Joint up on project',
-            'job_requirements'=>"Readiness to invest",
-        ]);
+        // departments::create([
+        //     'title'=>'Administration',
+        //     'type'=>'Administrative',
+        // ]);
+        // departments::create([
+        //     'title'=>'Customer Service',
+        //     'type'=>'Customer Service',
+        // ]);
+        // roles::create([
+        //     'dep_id'=>1,
+        //     'title'=>'Admin',
+        //     'job_description'=>'Manages all departments and rights',
+        //     'job_requirements'=>"Understands the system and its functioning. In addition ability in debugging Laravel programs will be an added advantage",
+        // ]);
+        // roles::create([
+        //     'dep_id'=>1,
+        //     'title'=>'Director',
+        //     'job_description'=>'Oversees all office operations',
+        //     'job_requirements'=>"Own the organization",
+        // ]);
+        // roles::create([
+        //     'dep_id'=>2,
+        //     'title'=>'Customer',
+        //     'job_description'=>'Random Inquiry',
+        //     'job_requirements'=>"",
+        // ]);
+        // roles::create([
+        //     'dep_id'=>2,
+        //     'title'=>'Client',
+        //     'job_description'=>'Undergoing Project',
+        //     'job_requirements'=>"Must pay for service",
+        // ]);
+        // roles::create([
+        //     'dep_id'=>2,
+        //     'title'=>'Investor',
+        //     'job_description'=>'Joint up on project',
+        //     'job_requirements'=>"Readiness to invest",
+        // ]);
         User::create([
             'fname'=>'Edimon',
             'sname'=>'Abimon',
