@@ -102,14 +102,24 @@ class InterviewController extends Controller
         if (request('status') != null && request('message') != null) {
             $application=application::findOrFail($int->application_id);
             if(request('status')=='Hired'){
-                $name=explode(' ',$application->applicant_name);
-                User::create([
-                    'email'=> $application->applicant_email,
-                    'contact'=>$application->applicant_contact,
-                    'fname'=>$name[0],
-                    'sname'=>end($name),
-                    'password'=>Hash::make($application->applicant_contact),
-                ]);
+                $user = User::where('email',$application->applicant_email)->first();
+                if(!$user){
+                    $name=explode(' ',$application->applicant_name);
+                    User::create([
+                        'email'=> $application->applicant_email,
+                        'contact'=>$application->applicant_contact,
+                        'fname'=>$name[0],
+                        'sname'=>end($name),
+                        'role_id'=>$application->vacancy->role_id,
+                        'isAdmin'=>true,
+                        'password'=>Hash::make($application->applicant_contact),
+                    ]);
+
+                }
+                else{
+                    $user->role_id = $application->vacancy->role_id;
+                    $user->isAdmin=true;
+                }
                 $mess='Hello, <br> Your application was '.request('status').'. <br>'.request('message').'<br> Login to the system by clicking <a href="https://dev.sampesagroup.com/login">here</a> and reset your password using this email('.$application->applicant_email.'). Remember to update your bio-details under your profile. <br>Welcome to Sampesa Group';
             }
             else{
@@ -133,7 +143,7 @@ class InterviewController extends Controller
             );
         }
         
-        return back()->with('success','Feedback recorded successfully.');
+        return back()->with('success','Feedback recorded successfully. Proceed to update the salary section under Staff.');
     }
 
     /**

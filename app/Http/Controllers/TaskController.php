@@ -12,7 +12,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        if(Auth()->user()->role =='Admin'){
+        if(Auth()->user()->role->title =='Admin'){
             $tasks = Task::all();
         }
         else{

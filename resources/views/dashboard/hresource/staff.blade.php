@@ -4,64 +4,116 @@
 
 <div class="container">
     <table class="table table-responsive">
-        <thead>
+        <thead style="white-space:nowrap;">
             <th>#</th>
             <th>Staff's Name</th>
-            <th>Nationality</th>
-            <th>Contact</th>
-            <th>ID</th>
-            <th>Role</th>
-            <th>Address</th>
-            <th>Change Role</th>
-            <th>View Profile</th>
+            <th>Gross staff</th>
+            <th>Allowance</th>
+            <th>NHIF</th>
+            <th>NSSF</th>
+            <th>PAYE</th>
+            <th>Other Deductions</th>
+            <th>Net Salary</th>
+            <th>Bank</th>
+            <th>Bank Account</th>
+            <th colspan="3" class="text-center">Actions</th>
         </thead>
         <tbody>
             @foreach ($staffs as $key=>$staff)
-            <tr>
+            <tr style="white-space:nowrap;">
                 <td>{{$key+1}}</td>
-                <td>{{$staff->fname}} {{$staff->sname}}</td>
-                <td>{{$staff->nationality}}</td>
-                <td>{{$staff->contact}}<br> <i>{{$staff->email}}</i></td>
-                <td>{{$staff->idNumber}}</td>
-                <td>{{$staff->role->title}}</td>
-                <td>{{$staff->residence}}</td>
+                <td>{{$staff->user->fname.' '.$staff->user->sname}}</td>
+                <td>{{number_format($staff->gross)}}</td>
+                <td>{{number_format($staff->Allowance)}}</td>
+                <td>{{number_format($staff->NHIF)}}</td>
+                <td>{{number_format($staff->NSSF)}}</td>
+                <td>{{number_format($staff->PAYE)}}</td>
+                <td>{{number_format($staff->Other)}}</td>
+                <td>{{number_format(($staff->gross+$staff->Allowance)-($staff->NHIF+$staff->NSSF+$staff->PAYE+$staff->Other))}}</td>
+                <td>{{$staff->bank}}</td>
+                <td>{{$staff->account}}</td>
                 <td>
-                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#Staff{{$staff->id}}">
-                        <i class="fas fa-plus fa-sm text-white-50"></i> Change Role
-                    </a>
-                    <!-- Button trigger modal -->
-                    <!-- Modal -->
-                    <div class="modal fade" id="Staff{{$staff->id}}" tabindex="-1" aria-labelledby="Staff{{$staff->id}}Label" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title fs-5" id="Staff{{$staff->id}}Label">Change {{$staff->fname}} {{$staff->lname}}'s Role</h3>
-                                    <button type="button" class="fa fa-close" data-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <form action="{{route('user.update',$staff->id)}}" method="post">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$staff->id}}">Edit</button>
+                </td>
+                <div class="modal fade" id="edit{{$staff->id}}" tabindex="-1" aria-labelledby="roleLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="roleLabel">Edit Staff</h1>
+                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="{{route('staff.update',$staff->id)}}" method="post">
                                 @csrf
                                 @method('PUT')
-                                    <div class="modal-body">
-                                        <div class="form-floating">
-                                            <select name="role_id" id="" class="form-select form-control">
-                                                @foreach (App\Models\roles::where('dep_id','!=','1')->select('title','id')->get() as $role)
-                                                <option value="{{$role->id}}" class='text-uppercase' {{($staff->role_id==$role->id)?'selected':''}}>{{$role->title}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                <div class="modal-body">
+                                    <div class="row mb-2">
+                                        <label for="" class="col-md-4">Gross Salary</label>
+                                        <input type="text" name="gross" value="{{$staff->gross}}" id="" class="form-control col-md-8">
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <div class="row mb-2">
+                                        <label for="" class="col-md-4">Allowance</label>
+                                        <input type="text" name="Allowance" value="{{$staff->Allowance}}" id="" class="form-control col-md-8">
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="row mb-2">
+                                        <label for="" class="col-md-4">NHIF</label>
+                                        <input type="text" name="NHIF" value="{{$staff->NHIF}}" id="" class="form-control col-md-8">
+                                    </div>
+                                    <div class="row mb-2">
+                                        <label for="" class="col-md-4">NSSF</label>
+                                        <input type="text" name="NSSF" value="{{$staff->NSSF}}" id="" class="form-control col-md-8">
+                                    </div>
+                                    <div class="row mb-2">
+                                        <label for="" class="col-md-4">PAYE</label>
+                                        <input type="text" name="PAYE" value="{{$staff->PAYE}}" id="" class="form-control col-md-8">
+                                    </div>
+                                    <div class="row mb-2">
+                                        <label for="" class="col-md-4">Other Deductions</label>
+                                        <input type="text" name="Other" value="{{$staff->Other}}" id="" class="form-control col-md-8">
+                                    </div>
+                                    <div class="row mb-2">
+                                        <label for="" class="col-md-4">Bank Name</label>
+                                        <input type="text" name="bank" value="{{$staff->bank}}" id="" class="form-control col-md-8">
+                                    </div>
+                                    <div class="row mb-2">
+                                        <label for="" class="col-md-4">Account No.</label>
+                                        <input type="text" name="account" value="{{$staff->account}}" id="" class="form-control col-md-8">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </td>
+                </div>
                 <td>
-                    <a href="{{route('user.show',$staff->id)}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" >
-                        <i class="fas fa-eye fa-sm text-white-50"></i> View
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#delete{{$staff->id}}">Delete</button>
+                </td>
+
+                <div class="modal fade" id="delete{{$staff->id}}" tabindex="-1" aria-labelledby="roleLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="roleLabel">Remove Staff</h1>
+                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="{{route('staff.destroy',$staff->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <div class="modal-body">
+                                    <p class="p-2 text-danger">Are you sure you want to remove this staff member from the system?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-danger">Remove</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <td>
+                    <a href="{{route('user.show',$staff->id)}}" class="btn btn-primary" > View
                     </a>
                 </td>
             </tr>

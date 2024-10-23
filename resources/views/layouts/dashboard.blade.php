@@ -131,6 +131,12 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('clients.index')}}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Non-Staff</span>
+                </a>
+            </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#jobs" aria-expanded="true" aria-controls="jobs">

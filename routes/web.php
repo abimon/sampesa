@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\CapitalController;
+use App\Http\Controllers\CDevelopmentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\DepMessageController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\FeasiibilityController;
+use App\Http\Controllers\GISController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\InterviewController;
@@ -15,6 +18,7 @@ use App\Http\Controllers\LoanApplicationController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\OwnershipController;
 use App\Http\Controllers\PayslipController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReportController;
@@ -223,6 +227,10 @@ Route::middleware('auth')->group(function () {
         'capital'=>CapitalController::class,
         'stock'=>StockController::class,
         'loan'=>LoanController::class,
+        'gis'=>GISController::class,
+        'status'=>FeasiibilityController::class,
+        'ownership'=>OwnershipController::class,
+        'cdev'=>CDevelopmentController::class,
     ]);
     Route::middleware(AdminMiddleware::class)->group(function () {
         Route::resources([

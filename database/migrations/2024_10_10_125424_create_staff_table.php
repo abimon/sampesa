@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('user_id');
+            $table->string('bank')->nullable();
+            $table->string('account')->nullable();
+            $table->string('gross')->nullable();
+            $table->string('Allowance')->nullable();
+            $table->string('NHIF')->nullable();
+            $table->string('NSSF')->nullable();
+            $table->string('PAYE')->nullable();
+            $table->string('Other')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
     }
 

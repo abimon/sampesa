@@ -47,8 +47,24 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="">Total Deductions</label>
-                                    <input type="text" class="form-control" name="deductions">
+                                    <label for="">NSSF</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="nssf" value="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="">NHIF</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="nhif" value="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="">Other Deductions</label>
+                                    <input type="text" class="form-control" name="deductions" value="">
                                 </div>
                                 <div class="col-md-8">
                                     <label for="">Explanation</label>
@@ -71,14 +87,16 @@
         <thead>
             <th>#</th>
             <th>Staff</th>
-            <th>For</th>
-            <th>Quest</th>
-            <th>Amount</th>
-            <th>Deductions</th>
-            <th>Net</th>
-            <th>Date</th>
-            <th>Status</th>
+            <th>Month</th>
+            <th>Gross Salary</th>
+            <th>Allowance</th>
+            <th>NHIF</th>
+            <th>NSSF</th>
+            <th>PAYE</th>
+            <th>Other Deductions</th>
+            <th>Net Salary</th>
             <th>Logged By</th>
+            <th colspan="3"></th>
         </thead>
         <tbody>
             @foreach ($salaries as $key=>$salary)
@@ -93,7 +111,9 @@
                 <td>{{($salary->amount)-($salary->deductions)}}</td>
                 <td>{{$salary->created_at}}</td>
                 <td>{{$salary->logger->fname}} {{$salary->logger->sname}}</td>
-                <td><button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$salary->id}}">Edit</button></td>
+                <td>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$salary->id}}">Edit</button>
+                </td>
                 <div class="modal fade" id="edit{{$salary->id}}" tabindex="-1" aria-labelledby="roleLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -155,7 +175,9 @@
                         </div>
                     </div>
                 </div>
-                <td><button class="btn btn-danger" data-toggle="modal" data-target="#delete{{$salary->id}}">Delete</button></td>
+                <td>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#delete{{$salary->id}}">Delete</button>
+                </td>
 
                 <div class="modal fade" id="delete{{$salary->id}}" tabindex="-1" aria-labelledby="roleLabel" aria-hidden="true">
                     <div class="modal-dialog">

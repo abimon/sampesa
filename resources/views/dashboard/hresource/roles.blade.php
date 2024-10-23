@@ -45,40 +45,71 @@
                             </div>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#Role{{$role->id}}">Edit</a></li>
-                                <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#new">Assign</a></li>
+                                <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#Assign{{$role->id}}">Assign</a></li>
                                 <li><a class="dropdown-item" href="{{route('department.show',$role->department->id)}}">View Department</a></li>
-                                <div class="modal fade" id="Role{{$role->id}}" tabindex="-1" aria-labelledby="roleLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="roleLabel">Edit {{$role->title}}</h1>
-                                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <form action="{{route('roles.update',$role->id)}}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="modal-body">
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" name="title" value="{{$role->title}}" class="form-control">
-                                                        <label for="location" class="text-capitalize">Role</label>
-                                                    </div>
-                                                    <label for="">Description</label>
-                                                    <textarea name="job_description" id="editor{{$role->id}}" class="form-control">{{$role->job_description}}</textarea>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </ul>
                         </div>
                     </div>
                     <div class="card-text">
                         <?php echo html_entity_decode($role->job_description); ?>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="Role{{$role->id}}" tabindex="-1" aria-labelledby="roleLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="roleLabel">Edit {{$role->title}}</h1>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{route('roles.update',$role->id)}}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="form-floating mb-2">
+                                <input type="text" name="title" value="{{$role->title}}" class="form-control">
+                                <label for="location" class="text-capitalize">Role</label>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-4" for="">Description</label>
+                                <textarea name="job_description" id="editor{{$role->id}}" class="form-control col-md-8">{{$role->job_description}}</textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="Assign{{$role->id}}" tabindex="-1" aria-labelledby="Assign{{$role->id}}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title fs-5" id="Assign{{$role->id}}Label">Assign {{$role->title}}ship</h3>
+                        <button type="button" class="fa fa-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{route('staff.store')}}" method="post">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="row">
+                                <input type="hidden" name="role_id" value="{{$role->id}}">
+                                <label for="" class="col-md-4">Staff Name</label>
+                                <select name="user_id" id="" class="col-md-8 form-select form-control">
+                                    @foreach (App\Models\User::select('fname','sname','id')->get() as $user)
+                                    <option class='text-uppercase' value="{{$user->id}}">{{$user->fname}} {{$user->sname}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

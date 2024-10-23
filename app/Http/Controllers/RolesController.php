@@ -13,8 +13,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        if (Auth()->user()->role != 'Admin') {
-            $role = roles::where('title', Auth()->user()->role)->first();
+        if (Auth()->user()->role->title != 'Admin') {
+            $role = roles::where('title', Auth()->user()->role->title)->first();
             $department = departments::findOrFail($role->dep_id);
             return view("dashboard.hresource.roles", compact("department"));
            

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,18 @@ class UserController extends Controller
      */
     public function index()
     {
+
+        // $users = User::where([['role_id','3'],['krapin','!=',null]])->get();
+        // $users = User::all();
+        // foreach ($users as $user) {
+        //     $user->fname = ucwords($user->fname);
+        //     $user->mname = ucwords($user->mname);
+        //     $user->sname = ucwords($user->sname);
+        //     $user->email = strtolower($user->email);
+        //     // $user->role_id = 4;
+        //     $user->update();
+        // }
+        // return $user;
         $users = User::all();
         return view("dashboard.clients.index", compact("users"));
     }
@@ -24,14 +37,14 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $user=User::where('email',request('email'))->orWhere('contact',request('contact'))->first();
+        $user = User::where('email', request('email'))->orWhere('contact', request('contact'))->first();
         if (!$user) {
             $user = User::create([
-                "fname" => request('fname'),
-                "lname" => request('lname'),
-                "contact" => request('contact'),
-                "email" => request('email'),
-                "idNumber" => request('idNumber'),
+                "fname" => ucfirst(request('fname')),
+                "lname" => ucfirst(request('lname')),
+                "contact" => ucfirst(request('contact')),
+                "email" => strtolower(request('email')),
+                "idNumber" => strtolower(request('idNumber')),
                 "nationality" => request('nationality'),
                 "address" => request('address'),
                 "role_id" => request('role_id'),
@@ -125,9 +138,28 @@ class UserController extends Controller
             $user->nokrelationship = request()->nokrelationship;
         }
         if (request()->role_id != null) {
-            $user->role_id = request()->role_id;
+            
             if ((request('role_id') != 3) || (request('role_id') != 4)) {
+                $staff = staff::where('user_id', request("user_id"))->first();
+                $user->role_id = request('role_id');
+                $user->update();
                 $user->isAdmin = true;
+                if (!$staff) {
+                    Staff::create(
+                        [
+                            "user_id" => $user->id,
+                            "bank" => request("bank"),
+                            "account" => request("account"),
+                            "gross" => request("gross"),
+                            "Allowance" => request("Allowance"),
+                            "NHIF" => request("NHIF"),
+                            "NSSF" => request("NSSF"),
+                            "PAYE" => request("PAYE"),
+                            "Other" => request("Other")
+                        ]
+                    );
+                    return back()->with("success", "Staff Created successfull.");
+                }
             } else {
                 $user->isAdmin = false;
             }

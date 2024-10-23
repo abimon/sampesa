@@ -15,13 +15,13 @@
                     <form action="{{route('department.store')}}" method="post">
                         @csrf
                         <div class="modal-body">
-                            <div class="form-floating mb-2">
-                                <label for="location" class="text-capitalize">Department Title</label>
-                                <input type="text" name="title" class="form-control">
+                            <div class="row mb-2">
+                                <label for="location" class="col-md-4 text-capitalize">Department Title</label>
+                                <input type="text" name="title" class="col-md-8 form-control">
                             </div>
-                            <div class="form-floating mb-2">
-                                <label for="location" class="text-capitalize">Category</label>
-                                <select name="type" id="" class="form-control">
+                            <div class="row mb-2">
+                                <label for="location" class="col-md-4 text-capitalize">Category</label>
+                                <select name="type" id="" class="col-md-8 form-control">
                                     <option value="Professional">Professional</option>
                                     <option value="Casual">Casual</option>
                                 </select>
@@ -57,20 +57,12 @@
                 <td>
                     <a class="btn btn-info" href="{{route('department.show',$dep->id)}}">View Positions</a>
                 </td>
-
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-@endsection
-@foreach ($deps as $dep)
-<div class="modal fade" id="dep{{$dep->id}}" tabindex="-4" aria-labelledby="roleLabel" aria-hidden="true">
+                <div class="modal fade" id="dep{{$dep->id}}" tabindex="-4" aria-labelledby="roleLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="roleLabel">Edit {{$dep->title}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{route('department.update',$dep->id)}}" method="post">
                 @csrf
@@ -82,18 +74,24 @@
                     </div>
                     <div class="row mb-2">
                         <label for="" class="col-md-4">Category</label>
-                        <select name="category" id="" class="form-control">
+                        <select name="category" id="" class="col-md-8 form-control">
+                        <option value="Administrative" {{$dep->category=='Administrative'?'selected':''}}>Administrative</option>
                             <option value="Professional" {{$dep->category=='Professional'?'selected':''}}>Professional</option>
                             <option value="Casual" {{$dep->category=='Casual'?'selected':''}}>Casual</option>
                         </select>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-@endforeach
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection

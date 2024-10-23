@@ -19,8 +19,8 @@
                                 <div class="col-md-4">Task To</div>
                                 <div class="col-md-8">
                                     <select name="to" id="" class="form-select form-control">
-                                        @foreach (App\Models\User::where([['role','!=','Admin'],['role','!=','Director'],['role','!=','Client']])->select('fname','sname','id')->get() as $user)
-                                        <option value="{{$user->id}}">{{$user->fname}} {{$user->fname}}</option>
+                                        @foreach (App\Models\User::where('role_id','>','4')->select('fname','sname','id')->get() as $user)
+                                        <option value="{{$user->id}}">{{$user->fname}} {{$user->sname}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -65,7 +65,7 @@
                                     <form action="{{route('task.update',$task->id)}}" method="post">
                                         @csrf
                                         @method('PUT')
-                                        <input type="submit" class="dropdown-item" value="{{$task->status=='Not completed'?'Completed':'Not Completed'}}" name="status">
+                                        <input type="submit" class="dropdown-item" value="{{$task->status=='Completed'?'Not Completed':'Completed'}}" name="status">
                                     </form>
                                 </li>
                                 @if ($task->from==Auth()->user()->id)
@@ -94,7 +94,7 @@
                                                 <div class="col-md-4">Task To</div>
                                                 <div class="col-md-8">
                                                     <select name="" id="" class="form-select form-control">
-                                                        @foreach (App\Models\User::where([['role','!=','Admin'],['role','!=','Director'],['role','!=','Client']])->select('fname','sname','id')->get() as $user)
+                                                    @foreach (App\Models\User::where('role_id','>','4')->select('fname','sname','id')->get() as $user)
                                                         <option value="{{$user->id}}" {{$user->id==$task->to?'selected':''}}>{{$user->fname}} {{$user->fname}}</option>
                                                         @endforeach
                                                     </select>
@@ -126,6 +126,10 @@
                         </div>
                     </div>
                     <div class="card-text">The task from <b>{{$task->assigner->fname}} {{$task->assigner->sname}}</b> is for <b>{{$task->assignee->fname}} {{$task->assignee->sname}}</b> to <b>{{$task->desc}}</b> before/by {{$task->due_date}} </div>
+                    <hr>
+                    <div class="alert {{$task->status=='Completed'?'alert-success':'alert-warning'}}">
+                        <i class="fa {{$task->status=='Completed'?'fa-check':'fa-close'}}"></i> {{$task->status}}
+                    </div>
 
                 </div>
             </div>

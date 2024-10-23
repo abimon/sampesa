@@ -3,10 +3,9 @@
 <div class="container" >
     <form action="{{route('project.store')}}" method="post">
         @csrf
-        <h3>Project Typing</h3>
-        <hr>
+        
         <div class="row">
-            <div class="col-md-6 row mb-2">
+            <div class="col-md-4 row mb-2">
                 <label for="" class="col-md-4" style="text-align:right;">Project Category</label>
                 <select name="category" id="" class="col-md-8 form-control">
                     <option value="" selected disabled>----Select the category of the project----</option>
@@ -15,24 +14,12 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-6 row mb-2">
+            <div class="col-md-4 row mb-2">
                 <label for="" class="col-md-4" style="text-align:right;">Project Title</label>
                 <input type="text" name="title" id="" class="col-md-8 form-control">
             </div>
-        </div>
-        <h3>Client Profile</h3>
-        <hr>
-        <div class="row">
-            <div class="col-md-6 row mb-2">
-                <label for="" class="col-md-4" style="text-align:right;">Client's Name</label>
-                <input type="text" name="client_name" id="" class="col-md-8 form-control">
-            </div>
-            <div class="col-md-6 row mb-2">
-                <label for="" class="col-md-4" style="text-align:right;">Client's Phone No.</label>
-                <input type="text" name="client_contact" id="" class="col-md-8 form-control">
-            </div>
-            <div class="col-md-6 row mb-2">
-                <label for="" class="col-md-4" style="text-align:right;">Client's ID Number</label>
+            <div class="col-md-4 row mb-2">
+                <label for="" class="col-md-4" style="text-align:right;">Client</label>
                 <input type="text" name="client_id" id="" class="col-md-8 form-control">
             </div>
         </div>

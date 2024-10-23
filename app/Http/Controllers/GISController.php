@@ -12,7 +12,7 @@ class GISController extends Controller
      */
     public function index()
     {
-        //
+        return view("dashboard.gis.step_geo");
     }
 
     /**

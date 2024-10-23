@@ -59,9 +59,17 @@ class DepartmentsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, departments $departments)
+    public function update($id)
     {
-        //
+        $dep= departments::findOrFail($id);
+        if(request('title')){
+            $dep->title = request('title');
+        }
+        if(request('type')){
+            $dep->title = request('title');
+        }
+        $dep->update();
+        return back()->with('success','Department Updated successfully.');
     }
 
     /**
