@@ -1,5 +1,6 @@
 @extends('layouts.dashboard',['title'=>'Social Amenities'])
 @section('dashboard')
+<div class="d-flex justify-content-end mb-2"><a href="{{route('geoinfo.index',['id'=>$id])}}"><button class='btn btn-outline-primary'>Next Phase(Geospatial Information) <i class="fa fa-arrow-right"></i></button></a></div>
 <div class="card p-3">
     <form action="" method="post">
         <div class="row">

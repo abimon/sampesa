@@ -1,13 +1,17 @@
 <?php
 
+use App\Http\Controllers\AmenityController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\CapitalController;
 use App\Http\Controllers\CDevelopmentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\DepMessageController;
+use App\Http\Controllers\DevnatureController;
+use App\Http\Controllers\DevtypeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FeasiibilityController;
+use App\Http\Controllers\GeoinfoController;
 use App\Http\Controllers\GISController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IncomeController;
@@ -26,6 +30,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\SUtilityController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacanciesController;
@@ -230,7 +235,12 @@ Route::middleware('auth')->group(function () {
         'gis'=>GISController::class,
         'status'=>FeasiibilityController::class,
         'ownership'=>OwnershipController::class,
-        'cdev'=>CDevelopmentController::class,
+        'current_development'=>CDevelopmentController::class,
+        'utility'=>SUtilityController::class,
+        'amenities'=>AmenityController::class,
+        'geoinfo'=>GeoinfoController::class,
+        'devnature'=>DevnatureController::class,
+        'development_type'=>DevtypeController::class,
     ]);
     Route::middleware(AdminMiddleware::class)->group(function () {
         Route::resources([

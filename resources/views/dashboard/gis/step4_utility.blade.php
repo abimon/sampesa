@@ -1,5 +1,6 @@
 @extends('layouts.dashboard',['title'=>'Services & Utility'])
 @section('dashboard')
+<div class="d-flex justify-content-end mb-2"><a href="{{route('amenities.index',['id'=>$id])}}"><button class='btn btn-outline-primary'>Next Phase(Social Amenities) <i class="fa fa-arrow-right"></i></button></a></div>
 <div class="card p-3">
     <form action="" method="post" enctype="multipart/form-data">
         <div class="row">

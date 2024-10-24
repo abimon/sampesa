@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -32,7 +33,8 @@ class ProjectController extends Controller
             'biogas',
             'valuation'
         ];
-        return view("dashboard.pmanager.create",compact("cats"));
+        $clients = User::where("role_id",4)->get();
+        return view("dashboard.pmanager.create",compact("cats",'clients'));
     }
 
     /**
@@ -50,7 +52,7 @@ class ProjectController extends Controller
             'town'=>request('town'),
             'area'=>request('area')
         ]);
-        return redirect('project.index')->with('success','Project created successfully.');
+        return redirect()->route('project.index')->with('success','Project created successfully.');
     }
 
     /**

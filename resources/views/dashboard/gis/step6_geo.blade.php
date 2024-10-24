@@ -1,6 +1,6 @@
 @extends('layouts.dashboard',['title'=>'Geospatial Information'])
 @section('dashboard')
-<script src="{{asset('storage/dash/js/locations.js')}}"></script>
+<div class="d-flex justify-content-end"><a href="{{route('devnature.index',['id'=>$id])}}"><button class='btn btn-outline-primary'>Next Phase(Nature of Development) <i class="fa fa-arrow-right"></i></button></a></div>
 <div class="card p-3" onload="getLocation()">
     <form action="" method="post" enctype="multipart/form-data">
         <div class="row">

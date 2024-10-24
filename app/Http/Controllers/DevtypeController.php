@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ownership;
+use App\Models\Devtype;
 use Illuminate\Http\Request;
 
-class OwnershipController extends Controller
+class DevtypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class OwnershipController extends Controller
     public function index()
     {
         $id = request('id');
-        return view('dashboard.gis.step2_ownership',compact('id'));
+        return view('dashboard.gis.step8_type',compact('id'));
     }
 
     /**
@@ -35,16 +35,15 @@ class OwnershipController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Devtype $devtype)
     {
-        $project=Ownership::where('project_id',$id)->first();
-        return view('',compact(''));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ownership $ownership)
+    public function edit(Devtype $devtype)
     {
         //
     }
@@ -52,7 +51,7 @@ class OwnershipController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ownership $ownership)
+    public function update(Request $request, Devtype $devtype)
     {
         //
     }
@@ -60,7 +59,7 @@ class OwnershipController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ownership $ownership)
+    public function destroy(Devtype $devtype)
     {
         //
     }

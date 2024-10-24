@@ -12,7 +12,8 @@ class CDevelopmentController extends Controller
      */
     public function index()
     {
-        //
+        $id = request('id');
+        return view('dashboard.gis.step3_currentdev',compact('id'));
     }
 
     /**

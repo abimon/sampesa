@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('g_i_s', function (Blueprint $table) {
+        Schema::create('devtypes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('assigner');
-            $table->string('visit_date');
-            $table->string('status')->default('Under survey');
+            $table->string('unit_type_p_dev');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
     }
@@ -30,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('g_i_s');
+        Schema::dropIfExists('devtypes');
     }
 };

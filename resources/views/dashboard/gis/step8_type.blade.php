@@ -1,5 +1,6 @@
 @extends('layouts.dashboard',['title'=>'House Type'])
 @section('dashboard')
+<div class="d-flex justify-content-end"><a href="{{route('project.show',$id==null?1:$id)}}"><button class='btn btn-outline-primary'>Next Phase(Report) <i class="fa fa-arrow-right"></i></button></a></div>
 <div class="card p-3">
     <form action="" method="post">
         <div class="row">

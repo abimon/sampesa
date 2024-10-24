@@ -296,7 +296,7 @@
                 </a>
                 <div id="gis" class="collapse" aria-labelledby="gis" data-parent="#accordionSidebar">
                     <div class="bg-gradient-light py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Projects</a>
+                        <a class="collapse-item" href="{{route('gis.index')}}">Projects</a>
                         <a class="collapse-item" href="">Calendar</a>
                         <a class="collapse-item" href="">Report</a>
                     </div>

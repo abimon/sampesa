@@ -1,7 +1,6 @@
 
 /public/storage
 .env
-
 npm-debug.log
 yarn-error.log
 /.fleet

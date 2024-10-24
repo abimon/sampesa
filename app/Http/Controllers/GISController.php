@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GIS;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class GISController extends Controller
@@ -12,7 +13,8 @@ class GISController extends Controller
      */
     public function index()
     {
-        return view("dashboard.gis.step_geo");
+        $projects = GIS::all();
+        return view("dashboard.gis.index", compact("projects"));
     }
 
     /**
@@ -29,20 +31,22 @@ class GISController extends Controller
     public function store(Request $request)
     {
         GIS::create([
-            'project_id'=>request(''),
-            'user_id'=>request(''),
-            'assigner'=>request(''),
-            'visit_date'=>request(''),
-            
+            'project_id'=>request('project_id'),
+            'user_id'=>request('user_id'),
+            'assigner'=>Auth()->user()->id,
+            'visit_date'=>request('visit_date'),
         ]);
+        Project::where('id', request('project_id'))->update(['status' => "GIS",'start_date'=>date('Y-m-d')]);
+        return back()->with("success","Project assigned successfully to GIS");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(GIS $gIS)
+    public function show($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view("dashboard.gis.show", compact("project"));
     }
 
     /**
